@@ -1,0 +1,43 @@
+{
+  "name": "reactapp",
+  "version": "1.0.0",
+  "description": "react app",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack-dev-server --open --mode development",
+    "clean": "rimraf dist/",
+    "prod": "npm run clean && webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OMManko/React.git"
+  },
+  "author": "OManko",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OMManko/React/issues"
+  },
+  "homepage": "https://github.com/OMManko/React#readme",
+  "dependencies": {
+    "jest": "^24.1.0",
+    "react-hot-loader": "^4.7.2",
+    "react-redux": "^6.0.1",
+    "react-router": "^4.3.1",
+    "redux": "^4.0.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.3.1",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.5",
+    "css-loader": "^2.1.0",
+    "express": "^4.16.4",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.2.3",
+    "webpack-dev-server": "^3.2.1"
+  }
+}
