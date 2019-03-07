@@ -4,6 +4,7 @@
   "description": "react app",
   "main": "index.js",
   "scripts": {
+    "test": "jest --coverage --coverageDirectory=output/coverage/jest",
     "dev": "webpack-dev-server --open --mode development",
     "clean": "rimraf dist/",
     "prod": "npm run clean && webpack --mode production"
@@ -19,7 +20,17 @@
   },
   "homepage": "https://github.com/OMManko/React#readme",
   "dependencies": {
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.13.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-react": "^1.1.7",
+    "eslint-loader": "^2.1.2",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-react": "^7.12.4",
     "jest": "^24.1.0",
+    "mini-css-extract-plugin": "^0.5.0",
+    "node-sass": "^4.11.0",
     "react-hot-loader": "^4.7.2",
     "react-redux": "^6.0.1",
     "react-router": "^4.3.1",
@@ -35,6 +46,7 @@
     "express": "^4.16.4",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
+    "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.2.3",
