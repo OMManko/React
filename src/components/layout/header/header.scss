@@ -1,0 +1,23 @@
+@import "../../shared/colors";
+
+.header {
+  padding: 20px 0;
+  background-color: $c-black;
+  color: $c-white;
+}
+
+.header__info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__logo {
+  display: inline-block;
+  text-decoration: none;
+  color: $c-pink;
+}
+
+.header__logoText {
+  color: $c-pink;
+}

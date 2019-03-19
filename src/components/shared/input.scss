@@ -1,0 +1,15 @@
+@import "colors";
+
+.formControl {
+  border-width: 0 0 1px 0;
+  border-color: $c-pink;
+  background-color: lighten($c-black, 10%);
+  color: $c-white;
+  width: 100%;
+  padding: 15px 20px;
+  font-size: 16px;
+
+  &:focus {
+    outline: none;
+  }
+}

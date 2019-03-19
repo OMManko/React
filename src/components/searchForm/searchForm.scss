@@ -1,0 +1,35 @@
+@import "../shared/colors";
+
+.searchForm__title {
+  color: $c-white;
+  text-transform: uppercase;
+  font-weight: normal;
+  margin-bottom: 30px;
+}
+
+.searchForm__controls {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+
+  .formRadio__groupTitle {
+    text-transform: uppercase;
+    color: $c-white;
+  }
+
+  .formRadio__label {
+    text-transform: uppercase;
+    background-color: #5c5d60;
+    padding: 3px 15px;
+    border-radius: 2px;
+    color: $c-white;
+  }
+
+  .formRadio__input {
+    &:checked {
+      + .formRadio__label {
+        background-color: $c-pink;
+      }
+    }
+  }
+}

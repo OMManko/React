@@ -1,0 +1,45 @@
+@import "../shared/colors";
+
+.movieInfo {
+  display: flex;
+  width: 80%;
+}
+
+.movieInfo__imgWrapper {
+  min-width: 40%;
+  margin-right: 50px;
+}
+
+.movieInfo__img {
+  width: 100%;
+  height: auto;
+}
+
+.movieInfo__main {
+  color: $c-white;
+}
+
+.movieInfo__title {
+  color: $c-pink;
+  font-size: 30px;
+  margin: 0 0 15px;
+}
+
+.movieInfo__details {
+  display: flex;
+  margin-top: 15px;
+}
+
+.movieInfo__year {
+  display: inline-block;
+  margin-right: 40px;
+}
+
+.movieInfo__genre,
+.movieInfo__description {
+  opacity: 0.8;
+}
+
+.movieInfo__description {
+  margin-top: 30px;
+}

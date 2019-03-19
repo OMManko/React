@@ -1,22 +1,21 @@
 import React from "react";
 import { hot } from "react-hot-loader";
 import './app.scss';
-import MyReactComponent from "../examples/myReactComponent";
-import MyFunctionalComponent from "../examples/myFunctionalComponent";
-import MyReactPureComponent from "../examples/myReactPureComponent";
-import MyReactCreateElement from "../examples/myReactCreateElement";
+import Header from "../layout/header/header";
+import Main from "../layout/main/main";
+import Footer from "../layout/footer/footer";
+import ErrorBoundary from "../errorBoundary/errorBoundary";
 
-class App extends React.Component {
-    render () {
-        return (
-            <main>
-                <MyReactCreateElement/>
-                <MyReactComponent/>
-                <MyReactPureComponent/>
-                <MyFunctionalComponent name="World!"/>
-            </main>
-        );
-    }
-}
+const App = () => (
+    <React.Fragment>
+        <ErrorBoundary>
+            <div className="wrapper">
+                <Header/>
+                <Main/>
+                <Footer/>
+            </div>
+        </ErrorBoundary>
+    </React.Fragment>
+);
 
 export default hot(module)(App);
