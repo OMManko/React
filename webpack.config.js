@@ -33,17 +33,17 @@ module.exports = (env, options) => {
                     use: [
                         devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
                         "css-loader",
-                        "sass-loader",
-                    ],
+                        "sass-loader"
+                    ]
                 },
                 {
                     test: /\.(png|jpg|gif)$/,
                     use: [
                         {
                             loader: 'file-loader',
-                            options: {},
-                        },
-                    ],
+                            options: {}
+                        }
+                    ]
                 }
             ]
         },
@@ -56,12 +56,11 @@ module.exports = (env, options) => {
         devServer: {
             contentBase: path.join(__dirname, "public/"),
             port: 3000,
-            publicPath: "http://localhost:3000/dist/",
             hotOnly: true
         },
         plugins: [
             new webpack.HotModuleReplacementPlugin(),
-            new MiniCssExtractPlugin({filename: '[name].css'})
+            new MiniCssExtractPlugin({ filename: '[name].css' })
         ]
-    }
+    };
 };
