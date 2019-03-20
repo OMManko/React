@@ -1,5 +1,6 @@
 import React from "react";
 import { hot } from "react-hot-loader";
+import PropTypes from "prop-types";
 
 function MyFunctionalComponent (props) {
     return (
@@ -9,5 +10,9 @@ function MyFunctionalComponent (props) {
         </div>
     );
 }
+
+MyFunctionalComponent.propTypes = {
+    name: PropTypes.string.isRequired
+};
 
 export default hot(module)(MyFunctionalComponent);
