@@ -18,7 +18,10 @@ module.exports = (env, options) => {
                     test: /\.(js|jsx)$/,
                     exclude: /node_modules/,
                     loader: 'babel-loader',
-                    options: { presets: ["@babel/env"] }
+                    options: {
+                        plugins: ["@babel/plugin-proposal-class-properties"],
+                        presets: ["@babel/env", "@babel/preset-react"]
+                    }
                 },
                 {
                     test: /\.js$/,
@@ -42,12 +45,7 @@ module.exports = (env, options) => {
                 },
                 {
                     test: /\.(png|jpg|gif)$/,
-                    use: [
-                        {
-                            loader: 'file-loader',
-                            options: {}
-                        }
-                    ]
+                    loader: 'file-loader'
                 }
             ]
         },
@@ -61,7 +59,7 @@ module.exports = (env, options) => {
             new webpack.HotModuleReplacementPlugin(),
             new MiniCssExtractPlugin({ filename: '[name].css' }),
             new HtmlWebpackPlugin({
-                template: './src/index.html',
+                template: './src/index.html'
             })
         ]
     };
