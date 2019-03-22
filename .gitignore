@@ -1,6 +1,6 @@
 node_modules
 .idea
 vcs.xml
-dist
 *.xml
 .idea/vcs.xml
+public/index.html
