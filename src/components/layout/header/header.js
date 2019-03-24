@@ -1,7 +1,8 @@
 import React from "react";
 import { hot } from "react-hot-loader";
 import "./header.scss";
-import Button from "../../shared/button";
+import Button from "../../shared/button/button";
+import AppLogo from "../../shared/app-logo/app-logo";
 
 class Header extends React.Component {
     constructor (props) {
@@ -18,9 +19,7 @@ class Header extends React.Component {
             <header className="header">
                 <div className="container">
                     <div className="header__info">
-                        <a href="/" className="header__logo">
-                            <span className="header__logoText">netflixroulette</span>
-                        </a>
+                        <AppLogo/>
                         <Button variant="btn--secondary" label="Search" handleAction={this.handleSearchFormOpen}/>
                     </div>
                 </div>

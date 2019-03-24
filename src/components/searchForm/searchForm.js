@@ -1,8 +1,8 @@
 import React from "react";
 import { hot } from "react-hot-loader";
-import Button from "../shared/button";
-import TextField from "../shared/input";
-import RadioGroup from "../shared/radioGroup";
+import Button from "../shared/button/button";
+import TextField from "../shared/input/input";
+import RadioGroup from "../shared/radioGroup/radioGroup";
 import "./searchForm.scss";
 
 

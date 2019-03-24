@@ -1,0 +1,11 @@
+@import "../../../styles/variables";
+
+.app__logo {
+  display: inline-block;
+  text-decoration: none;
+  color: $c-pink;
+}
+
+.app__logoText {
+  color: $c-pink;
+}

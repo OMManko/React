@@ -1,6 +1,6 @@
 import React from "react";
 import { hot } from "react-hot-loader";
-import RadioGroup from "../shared/radioGroup";
+import RadioGroup from "../shared/radioGroup/radioGroup";
 import "./searchResultsAddInfoPanel.scss";
 
 class SearchResultsAddInfoPanel extends React.Component {

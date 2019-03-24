@@ -1,4 +1,4 @@
-@import "../../shared/colors";
+@import "../../../styles/variables";
 
 .header {
   padding: 20px 0;
@@ -10,14 +10,4 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.header__logo {
-  display: inline-block;
-  text-decoration: none;
-  color: $c-pink;
-}
-
-.header__logoText {
-  color: $c-pink;
 }

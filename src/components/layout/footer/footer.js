@@ -1,12 +1,13 @@
 import React from "react";
 import { hot } from "react-hot-loader";
 import "./footer.scss";
+import AppLogo from "../../shared/app-logo/app-logo";
 
 
 const Footer = () => (
     <footer className="footer">
         <div className="container">
-            <span className="footer__logo">netflixroulette</span>
+            <AppLogo/>
         </div>
     </footer>
 );

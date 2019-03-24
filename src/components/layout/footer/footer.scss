@@ -1,12 +1,8 @@
-@import "../../shared/colors";
+@import "../../../styles/variables";
 
 .footer {
   flex: 0 0 auto;
   padding: 20px 0;
   background-color: $c-black;
   color: $c-white;
-}
-
-.footer__logo {
-  color: $c-pink;
 }

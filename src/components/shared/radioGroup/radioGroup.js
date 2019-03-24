@@ -1,7 +1,7 @@
 import React from "react";
 import { hot } from "react-hot-loader";
 import PropTypes from "prop-types";
-import Radio from "./radio";
+import Radio from "../radio/radio";
 import "./radioGroup.scss";
 
 class RadioGroup extends React.Component {
