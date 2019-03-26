@@ -5,8 +5,13 @@
   overflow: hidden;
   position: relative;
 
+  .movieInfo & {
+    min-width: 40%;
+    margin-right: 50px;
+  }
+
   &.moviePoster__small {
-    padding-top: 80%;
+    padding-top: 30%;
   }
 
   &.moviePoster__medium {

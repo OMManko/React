@@ -7,9 +7,7 @@ import { moviePosterSizes } from '../../constants/constants';
 
 const MovieInfo = ({ src, title, genre, year, duration, description }) => (
     <article className="movieInfo">
-        <div className="movieInfo__imgWraper">
-            <MoviePoster src={src} size={moviePosterSizes.SMALL}/>
-        </div>
+        <MoviePoster src={src} size={moviePosterSizes.SMALL}/>
         <div className="movieInfo__main">
             <h2 className="movieInfo__title">{title}</h2>
             <div className="movieInfo__genre">{genre}</div>
