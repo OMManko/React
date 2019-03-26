@@ -24,7 +24,7 @@ MovieCard.propTypes = {
 };
 
 MovieCard.defaultProps = {
-    year: '2000',
+    year: 2000,
     genre: "Not determined"
 };
 
