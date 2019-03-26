@@ -21,6 +21,7 @@
   "homepage": "https://github.com/OMManko/React#readme",
   "dependencies": {
     "babel-eslint": "^10.0.1",
+    "babel-jest": "^24.1.0",
     "eslint": "^5.13.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-react": "^1.1.7",
@@ -36,6 +37,7 @@
     "react-hot-loader": "^4.7.2",
     "react-redux": "^6.0.1",
     "react-router": "^4.3.1",
+    "react-test-renderer": "^16.8.4",
     "redux": "^4.0.1",
     "svg-loader": "0.0.2"
   },
@@ -47,6 +49,9 @@
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.5",
     "css-loader": "^2.1.0",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.11.2",
+    "enzyme-to-json": "^3.3.5",
     "express": "^4.16.4",
     "html-webpack-plugin": "^3.2.0",
     "react": "^16.8.3",

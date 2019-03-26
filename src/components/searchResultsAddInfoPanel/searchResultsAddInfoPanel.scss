@@ -1,0 +1,29 @@
+@import "../../styles/variables";
+
+.searchResultsAddInfoPanel {
+  padding: 20px 0;
+  background-color: $c-ultra-light-gray;
+  color: $c-gray;
+  font-weight: bold;
+}
+
+.searchResultsAddInfo {
+  display: flex;
+  justify-content: space-between;
+
+  .formRadio__input {
+    &:checked + .formRadio__label {
+      color: $c-pink;
+    }
+  }
+
+  .formRadio__label {
+    color: $c-dark-gray;
+  }
+}
+
+.searchResultsAddInfo__displayInfoValue {
+  display: inline-block;
+  margin-left: 15px;
+  font-size: 12px;
+}

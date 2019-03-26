@@ -1,0 +1,13 @@
+@import "../../../styles/variables";
+
+.header {
+  padding: 20px 0;
+  background-color: $c-black;
+  color: $c-white;
+}
+
+.header__info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

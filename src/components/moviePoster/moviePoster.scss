@@ -1,0 +1,30 @@
+@import "../../styles/variables";
+
+.moviePoster__imgWrapper {
+  height: 0;
+  overflow: hidden;
+  position: relative;
+
+  .movieInfo & {
+    min-width: 40%;
+    margin-right: 50px;
+  }
+
+  &.moviePoster__small {
+    padding-top: 30%;
+  }
+
+  &.moviePoster__medium {
+    padding-top: 100%;
+  }
+}
+
+.moviePoster__img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  max-width: 100%;
+  height: 100%;
+}
+
