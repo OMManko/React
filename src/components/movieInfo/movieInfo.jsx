@@ -5,28 +5,23 @@ import PropTypes from "prop-types";
 import MoviePoster from "../moviePoster/moviePoster";
 import { moviePosterSizes } from '../../constants/constants';
 
-const MovieInfo = ({ src, title, genre, year, duration, description }) => (
+const MovieInfo = ({ movie }) => (
     <article className="movieInfo">
-        <MoviePoster src={src} size={moviePosterSizes.SMALL}/>
+        <MoviePoster src={movie.src} size={moviePosterSizes.SMALL}/>
         <div className="movieInfo__main">
-            <h2 className="movieInfo__title">{title}</h2>
-            <div className="movieInfo__genre">{genre}</div>
+            <h2 className="movieInfo__title">{movie.title}</h2>
+            <div className="movieInfo__genre">{movie.genre}</div>
             <div className="movieInfo__details">
-                <span className="movieInfo__year">{year}</span>
-                <span className="movieInfo__duration">{duration}</span>
+                <span className="movieInfo__year">{movie.year}</span>
+                <span className="movieInfo__duration">{movie.duration}</span>
             </div>
-            <div className="movieInfo__description">{description}</div>
+            <div className="movieInfo__description">{movie.description}</div>
         </div>
     </article>
 );
 
 MovieInfo.propTypes = {
-    src: PropTypes.string,
-    title: PropTypes.string,
-    year: PropTypes.number,
-    genre: PropTypes.string,
-    duration: PropTypes.string,
-    description: PropTypes.string
+    movie: PropTypes.object
 };
 
 export default hot(module)(MovieInfo);

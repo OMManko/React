@@ -4,10 +4,11 @@
   "description": "react app",
   "main": "index.js",
   "scripts": {
-    "test": "jest --coverage --coverageDirectory=output/coverage/jest",
+    "test": "jest -u",
     "dev": "webpack-dev-server --open --mode development",
     "clean": "rimraf dist/",
-    "prod": "npm run clean && webpack --mode production"
+    "prod": "npm run clean && webpack --mode production",
+    "cypress:open": "cypress open"
   },
   "repository": {
     "type": "git",
@@ -48,12 +49,16 @@
     "@babel/preset-env": "^7.3.1",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.5",
+    "babel-plugin-transform-export-extensions": "^6.22.0",
     "css-loader": "^2.1.0",
+    "cypress": "^3.2.0",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.11.2",
     "enzyme-to-json": "^3.3.5",
+    "eslint-plugin-cypress": "^2.2.1",
     "express": "^4.16.4",
     "html-webpack-plugin": "^3.2.0",
+    "jest-enzyme": "^7.0.2",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
     "sass-loader": "^7.1.0",
@@ -61,5 +66,39 @@
     "webpack": "^4.29.6",
     "webpack-cli": "^3.2.3",
     "webpack-dev-server": "^3.2.1"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "coverageDirectory": "<rootDir>/coverage",
+    "modulePaths": [
+      "<rootDir>/"
+    ],
+    "moduleNameMapper": {
+      "\\.(css|scss)$": "<rootDir>/config/styleMocks.js",
+      "\\.(png|jpg|gif|ttf|eot|svg)$": "<rootDir>/config/fileMocks.js"
+    },
+    "transform": {
+      ".*": "<rootDir>/node_modules/babel-jest"
+    },
+    "unmockedModulePathPatterns": [
+      "<rootDir>/node_modules/react"
+    ],
+    "setupFiles": [
+      "<rootDir>/config/setupTests.js"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ],
+    "modulePathIgnorePatterns": [
+      "<rootDir>/cypress/"
+    ],
+    "transformIgnorePatterns": [
+      "/node_modules/(?!test-component).+\\.js$",
+      "/cypress/"
+    ]
+  },
+  "cypress": {
+    "baseUrl": "http://localhost:3000"
   }
 }

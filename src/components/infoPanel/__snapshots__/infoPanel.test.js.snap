@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<InfoPanel /> should contain movie info 1`] = `ReactWrapper {}`;
+
+exports[`<InfoPanel /> should contain search form 1`] = `ReactWrapper {}`;
+
+exports[`<InfoPanel /> should render info panel and match snapshot 1`] = `ShallowWrapper {}`;

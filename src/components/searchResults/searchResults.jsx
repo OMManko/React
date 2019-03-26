@@ -16,7 +16,7 @@ class SearchResults extends React.PureComponent {
             <div className="searchResults__wrapper">
                 <div className="container">
                     <div className="searchResults">
-                        {/* TODO: add if statements */}
+                        {/* TODO: add if statements and unit tests*/}
                         <NoResults/>
                     </div>
                     <div className="searchResults">

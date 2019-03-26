@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<MoviePoster /> should render movie poster and match snapshot 1`] = `ShallowWrapper {}`;
+
+exports[`<MoviePoster /> should set size to movie poster 1`] = `ShallowWrapper {}`;
+
+exports[`<MoviePoster /> should set src to movie poster image 1`] = `ShallowWrapper {}`;

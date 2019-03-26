@@ -15,6 +15,7 @@ class SearchResultsAddInfoPanel extends React.Component {
         return (
             <div className="searchResultsAddInfoPanel">
                 <div className="container">
+                    {/*TODO: add if statement and unit test*/}
                     <div className="searchResultsAddInfo">
                         <p>7 movies found</p>
                         <RadioGroup title="Sort by"
