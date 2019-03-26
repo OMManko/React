@@ -1,7 +1,7 @@
 import React from "react";
 import { hot } from "react-hot-loader";
 import "./footer.scss";
-import AppLogo from "../../shared/app-logo/app-logo";
+import AppLogo from "../../shared/appLogo/appLogo";
 
 
 const Footer = () => (

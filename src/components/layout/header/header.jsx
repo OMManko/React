@@ -2,7 +2,7 @@ import React from "react";
 import { hot } from "react-hot-loader";
 import "./header.scss";
 import Button from "../../shared/button/button";
-import AppLogo from "../../shared/app-logo/app-logo";
+import AppLogo from "../../shared/appLogo/appLogo";
 
 class Header extends React.Component {
     constructor (props) {

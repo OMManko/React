@@ -24,7 +24,7 @@ MovieList.propTypes = {
 };
 
 MovieList.defaultProps = {
-    movies: {}
+    movies: []
 };
 
 export default hot(module)(MovieList);
