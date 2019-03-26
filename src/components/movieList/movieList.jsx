@@ -4,9 +4,9 @@ import PropTypes from "prop-types";
 import MovieCard from "../movieCard/movieCard";
 import "./movieList.scss";
 
-const MovieList = (props) => (
+const MovieList = ({ movies }) => (
     <div className="movieList">
-        {props.movies.map((movie, i) => {
+        {movies.map((movie, i) => {
             return (
                 <MovieCard
                     key={i}
@@ -21,6 +21,10 @@ const MovieList = (props) => (
 
 MovieList.propTypes = {
     movies: PropTypes.array
+};
+
+MovieList.defaultProps = {
+    movies: {}
 };
 
 export default hot(module)(MovieList);

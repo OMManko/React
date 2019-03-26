@@ -2,6 +2,7 @@ import React from "react";
 import { hot } from "react-hot-loader";
 import "./searchResults.scss";
 import MovieList from "../movieList/movieList";
+import NoResults from "../noResults/noResults";
 
 
 class SearchResults extends React.PureComponent {
@@ -15,15 +16,14 @@ class SearchResults extends React.PureComponent {
             <div className="searchResults__wrapper">
                 <div className="container">
                     <div className="searchResults">
-                        <h2 className="searchResults__title">No films found</h2>
+                        {/* TODO: add if statements */}
+                        <NoResults/>
                     </div>
                     <div className="searchResults">
                         <MovieList
                             movies = {[
                                 {
-                                    src: "https://cdn.cnn.com/cnnnext/dam/assets/190315113313-04-mafia-crime-families-have-evolved-file-restricted-use-super-tease.jpg",
                                     title: "Terminator",
-                                    year: 1992,
                                     genre: "Drama"
                                 },
                                 {
@@ -35,8 +35,7 @@ class SearchResults extends React.PureComponent {
                                 {
                                     src: "https://static.foxnews.com/foxnews.com/content/uploads/2019/03/ContentBroker_contentid-69dbf9e7dfac4a638f979c3d70c7321e-1.png",
                                     title: "Plup Function",
-                                    year: 2002,
-                                    genre: "Oscar-winning movie"
+                                    year: 2002
                                 },
                                 {
                                     src: "https://static01.nyt.com/images/2019/03/16/world/16nz-briefing-promo-03/16nz-briefing-promo-02-facebookJumbo.jpg",

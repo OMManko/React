@@ -5,19 +5,14 @@ import Radio from "../radio/radio";
 import "./radioGroup.scss";
 
 class RadioGroup extends React.Component {
-    static propTypes = {
-        title: PropTypes.string,
-        radios: PropTypes.array,
-        name: PropTypes.string
-    };
-
     render () {
+        const { title, name } = this.props;
         return (
             <div className="formRadio__groupWrapper">
-                <span className="formRadio__groupTitle">{this.props.title}</span>
+                <span className="formRadio__groupTitle">{title}</span>
                 <div className="formRadio__group">
                     {this.props.radios.map((radio, i) => {
-                        return (<Radio name={this.props.name}
+                        return (<Radio name={name}
                             key={i}
                             id={radio.id}
                             label={radio.label}
@@ -28,5 +23,11 @@ class RadioGroup extends React.Component {
         );
     }
 }
+
+RadioGroup.propTypes = {
+    title: PropTypes.string,
+    radios: PropTypes.array,
+    name: PropTypes.string
+};
 
 export default hot(module)(RadioGroup);

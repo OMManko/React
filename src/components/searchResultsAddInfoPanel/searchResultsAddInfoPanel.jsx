@@ -2,6 +2,8 @@ import React from "react";
 import { hot } from "react-hot-loader";
 import RadioGroup from "../shared/radioGroup/radioGroup";
 import "./searchResultsAddInfoPanel.scss";
+import { sortOptions } from '../../constants/constants';
+
 
 class SearchResultsAddInfoPanel extends React.Component {
     constructor (props) {
@@ -20,12 +22,12 @@ class SearchResultsAddInfoPanel extends React.Component {
                             radios={[
                                 {
                                     id: "releaseDate",
-                                    label: "release date",
+                                    label: sortOptions.RELEASE,
                                     defaultChecked: true
                                 },
                                 {
                                     id: "rating",
-                                    label: "rating"
+                                    label: sortOptions.RATING
                                 }
                             ]}
                         />

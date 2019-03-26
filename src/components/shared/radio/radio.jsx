@@ -3,42 +3,42 @@ import { hot } from "react-hot-loader";
 import "./radio.scss";
 import PropTypes from "prop-types";
 
-
 class Radio extends React.Component {
-    static propTypes = {
-        name: PropTypes.string,
-        id: PropTypes.string,
-        label: PropTypes.string,
-        additionalClassName: PropTypes.string,
-        defaultChecked: PropTypes.bool
-    };
-
     constructor (props) {
         super(props);
         this.state = {};
     }
 
-    handleRadioChange () {
+    handleRadioChange = () => {
         console.log(`Selected property is ${this.props.id}`);
-    }
+    };
 
     render () {
+        const { name, id, defaultChecked, label } = this.props;
         return (
             <div className="formRadio">
                 <input
                     className="formRadio__input"
                     type="radio"
-                    name={this.props.name}
-                    id={this.props.id}
-                    defaultChecked={this.props.defaultChecked}
-                    onChange={this.handleRadioChange.bind(this)}
+                    name={name}
+                    id={id}
+                    defaultChecked={defaultChecked}
+                    onChange={this.handleRadioChange}
                 />
-                <label className="formRadio__label" htmlFor={this.props.id}>
-                    {this.props.label}
+                <label className="formRadio__label" htmlFor={id}>
+                    {label}
                 </label>
             </div>
         );
     }
 }
+
+Radio.propTypes = {
+    name: PropTypes.string,
+    id: PropTypes.string,
+    label: PropTypes.string,
+    additionalClassName: PropTypes.string,
+    defaultChecked: PropTypes.bool
+};
 
 export default hot(module)(Radio);
