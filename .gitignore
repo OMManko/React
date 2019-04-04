@@ -4,3 +4,8 @@ vcs.xml
 *.xml
 .idea/vcs.xml
 public/index.html
+coverage
+cypress/fixtures
+cypress/plugins
+cypress/support
+

@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SearchResultsAddInfoPanel /> should render search results additional info panel and match snapshot 1`] = `ShallowWrapper {}`;

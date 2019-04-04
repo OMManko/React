@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<RadioGroup /> should render radio group and match snapshot 1`] = `ShallowWrapper {}`;
+
+exports[`<RadioGroup /> should set name to radio input 1`] = `ReactWrapper {}`;
+
+exports[`<RadioGroup /> should set title to radio group 1`] = `ReactWrapper {}`;

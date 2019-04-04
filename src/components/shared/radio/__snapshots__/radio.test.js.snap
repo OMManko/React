@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Radio /> should render radio and match snapshot 1`] = `ShallowWrapper {}`;
+
+exports[`<Radio /> should set checked property if true is passed 1`] = `ShallowWrapper {}`;
+
+exports[`<Radio /> should set id to radio 1`] = `ShallowWrapper {}`;
+
+exports[`<Radio /> should set label to radio label 1`] = `ShallowWrapper {}`;
+
+exports[`<Radio /> should set name to radio 1`] = `ShallowWrapper {}`;

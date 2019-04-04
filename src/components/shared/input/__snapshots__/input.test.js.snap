@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TextField /> should render text field and match snapshot 1`] = `ShallowWrapper {}`;
+
+exports[`<TextField /> should render text field with class 1`] = `ShallowWrapper {}`;
