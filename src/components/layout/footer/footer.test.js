@@ -3,9 +3,12 @@ import React from 'react';
 import Footer from '../footer/footer';
 import AppLogo from '../../shared/appLogo/appLogo';
 
-const component = shallow(<Footer/>);
+let component;
 
 describe('<Footer />', () => {
+    beforeEach(() => {
+        component = shallow(<Footer/>);
+    });
     it('should render footer and match snapshot', () => {
         expect(component).toMatchSnapshot();
     });

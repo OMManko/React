@@ -1,4 +1,4 @@
-import { shallow, mount } from 'enzyme';
+import { mount } from 'enzyme';
 import React from 'react';
 import InfoPanel from '../infoPanel/infoPanel';
 import MovieInfo from "../movieInfo/movieInfo";

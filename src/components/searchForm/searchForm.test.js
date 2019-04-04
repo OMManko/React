@@ -4,9 +4,12 @@ import SearchForm from '../searchForm/searchForm';
 import TextField from "../shared/input/input";
 import RadioGroup from "../shared/radioGroup/radioGroup";
 
-const component = shallow(<SearchForm/>);
+let component;
 
 describe('<SearchForm />', () => {
+    beforeEach(() => {
+        component = shallow(<SearchForm/>);
+    });
     it('should render search form and match snapshot', () => {
         expect(component).toMatchSnapshot();
     });

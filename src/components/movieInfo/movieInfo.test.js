@@ -12,10 +12,12 @@ const movieInfoMock = {
     description: "Some descrition"
 };
 
-const component = shallow(<MovieInfo movie = {movieInfoMock}/>);
-
+let component;
 
 describe('<MovieInfo />', () => {
+    beforeEach(() => {
+        component = shallow(<MovieInfo movie = {movieInfoMock}/>);
+    });
     it('should render movie info and match snapshot', () => {
         expect(component).toMatchSnapshot();
     });

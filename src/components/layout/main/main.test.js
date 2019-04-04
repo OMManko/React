@@ -1,4 +1,4 @@
-import { mount, shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import React from 'react';
 import Main from './main';
 import SearchResults from "../../searchResults/searchResults";
