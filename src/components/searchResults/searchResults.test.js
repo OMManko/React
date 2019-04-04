@@ -1,4 +1,4 @@
-import { mount, shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import React from 'react';
 import SearchResults from './searchResults';
 import NoResults from '../noResults/noResults';
@@ -18,7 +18,6 @@ describe('<SearchResults />', () => {
     });
 
     it('should render search results block and match snapshot', () => {
-        component = shallow(<SearchResults/>);
         expect(component).toMatchSnapshot();
     });
 

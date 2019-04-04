@@ -6,8 +6,11 @@ import MoviePoster from "../moviePoster/moviePoster";
 let component;
 
 describe('<MovieCard />', () => {
-    it('should render radio group and match snapshot', () => {
+    beforeEach(() => {
         component = shallow(<MovieCard />);
+    });
+
+    it('should render radio group and match snapshot', () => {
         expect(component).toMatchSnapshot();
     });
 

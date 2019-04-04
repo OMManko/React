@@ -3,9 +3,12 @@ import React from 'react';
 import Header from '../header/header';
 import AppLogo from "../../shared/appLogo/appLogo";
 
-const component = shallow(<Header/>);
+let component;
 
 describe('<Footer />', () => {
+    beforeEach(() => {
+        component = shallow(<Header/>);
+    });
     it('should render header and match snapshot', () => {
         expect(component).toMatchSnapshot();
     });

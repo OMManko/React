@@ -27,7 +27,6 @@ describe('<InfoPanel />', () => {
     });
 
     it('should render info panel and match snapshot', () => {
-        component = shallow(<InfoPanel/>);
         expect(component).toMatchSnapshot();
     });
 

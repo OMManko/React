@@ -19,7 +19,6 @@ describe('<Main />', () => {
     });
 
     it('should render main part and match snapshot', () => {
-        component = shallow(<Main/>);
         expect(component).toMatchSnapshot();
     });
 
