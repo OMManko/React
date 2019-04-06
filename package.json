@@ -61,6 +61,8 @@
     "jest-enzyme": "^7.0.2",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
+    "redux-devtools": "^3.5.0",
+    "redux-thunk": "^2.3.0",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "webpack": "^4.29.6",

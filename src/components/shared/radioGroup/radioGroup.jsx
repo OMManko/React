@@ -6,7 +6,7 @@ import "./radioGroup.scss";
 
 class RadioGroup extends React.Component {
     render () {
-        const { title, name } = this.props;
+        const { title, name, handleAction } = this.props;
         return (
             <div className="formRadio__groupWrapper">
                 <span className="formRadio__groupTitle">{title}</span>
@@ -16,7 +16,8 @@ class RadioGroup extends React.Component {
                             key={i}
                             id={radio.id}
                             label={radio.label}
-                            defaultChecked={radio.defaultChecked}/>);
+                            checked= {radio.checked}
+                            handleAction={handleAction}/>);
                     })}
                 </div>
             </div>
@@ -27,6 +28,7 @@ class RadioGroup extends React.Component {
 RadioGroup.propTypes = {
     title: PropTypes.string,
     radios: PropTypes.array,
+    handleAction: PropTypes.func,
     name: PropTypes.string
 };
 

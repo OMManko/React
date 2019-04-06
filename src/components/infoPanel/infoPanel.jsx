@@ -3,32 +3,40 @@ import { hot } from "react-hot-loader";
 import "./infoPanel.scss";
 import SearchForm from "../searchForm/searchForm";
 import MovieInfo from "../movieInfo/movieInfo";
-
-const movieMock = {
-    src: "https://cdn.cnn.com/cnnnext/dam/assets/190315113313-04-mafia-crime-families-have-evolved-file-restricted-use-super-tease.jpg",
-    title: "Pulp Fiction",
-    year: 1992,
-    genre: "Oscar-winning Movies",
-    duration: "154 min",
-    description: "Some descrition"
-};
+import PropTypes from "prop-types";
+import connect from "react-redux/es/connect/connect";
 
 class InfoPanel extends React.Component {
-    constructor (props) {
-        super(props);
-        this.state = {}; // is necessary to switch between search form and movie info
-    }
-
     render () {
+        const {
+            movie,
+            selectedMovieInfo
+        } = this.props;
+
         return (
             <div className="infoPanel">
                 <div className="container">
-                    <MovieInfo movie={movieMock}/>
-                    <SearchForm/>
+                    {Object.keys(selectedMovieInfo).length > 0 ?
+                        (
+                            <MovieInfo movie={movie}/>
+                        ) :
+                        (
+                            <SearchForm/>
+                        )}
                 </div>
             </div>
         );
     }
 }
 
-export default hot(module)(InfoPanel);
+InfoPanel.propTypes = {
+    movie: PropTypes.object,
+    selectedMovieInfo: PropTypes.object
+};
+
+const mapStateToProps = state => ({
+    selectedMovieInfo: state.selectedMovieInfo
+});
+
+export default hot(module)(connect(mapStateToProps)(InfoPanel));
+

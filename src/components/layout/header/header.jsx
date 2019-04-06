@@ -3,28 +3,42 @@ import { hot } from "react-hot-loader";
 import "./header.scss";
 import Button from "../../shared/button/button";
 import AppLogo from "../../shared/appLogo/appLogo";
+import PropTypes from "prop-types";
+import { resetSelectedMovie } from "../../../actions/actions";
+import connect from "react-redux/es/connect/connect";
 
 class Header extends React.Component {
-    constructor (props) {
-        super(props);
-        this.state = {}; // is necessary to show/hide search button
-    }
-
-    handleSearchFormOpen () {
-        console.log("Open search form");
-    }
-
     render () {
+        const {
+            resetSelectedMovie,
+            selectedMovieInfo
+        } = this.props;
+
         return (
             <header className="header">
                 <div className="container">
                     <div className="header__info">
                         <AppLogo/>
-                        <Button variant="btn--secondary" label="Search" handleAction={this.handleSearchFormOpen}/>
+                        {Object.keys(selectedMovieInfo).length > 0 &&
+                            <Button variant="btn--secondary" label="Search" handleAction={resetSelectedMovie}/>}
                     </div>
                 </div>
             </header>
         );
     }
 }
-export default hot(module)(Header);
+
+Header.propTypes = {
+    resetSelectedMovie: PropTypes.func,
+    selectedMovieInfo: PropTypes.object
+};
+
+const mapStateToProps = state => ({
+    selectedMovieInfo: state.selectedMovieInfo
+});
+
+const mapDispatchToProps = {
+    resetSelectedMovie: resetSelectedMovie
+};
+
+export default hot(module)(connect(mapStateToProps, mapDispatchToProps)(Header));

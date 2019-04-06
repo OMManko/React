@@ -3,28 +3,32 @@ import { hot } from "react-hot-loader";
 import PropTypes from "prop-types";
 import MovieCard from "../movieCard/movieCard";
 import "./movieList.scss";
+import connect from "react-redux/es/connect/connect";
 
-const MovieList = ({ movies }) => (
+const MovieList = ({ moviesList }) => (
     <div className="movieList">
-        {movies.map((movie, i) => {
+        {moviesList.map((movie, i) => {
             return (
                 <MovieCard
                     key={i}
-                    src={movie.src}
+                    id={movie.id}
+                    src={movie.poster_path}
                     title={movie.title}
-                    year={movie.year}
-                    genre={movie.genre}/>
+                    release={movie.release}
+                    rating={movie.vote_average}
+                    genres={movie.genres}/>
             );
         })}
     </div>
 );
 
 MovieList.propTypes = {
-    movies: PropTypes.array
+    moviesList: PropTypes.array
 };
 
-MovieList.defaultProps = {
-    movies: []
-};
+const mapStateToProps = state => ({
+    moviesList: state.moviesList
+});
 
-export default hot(module)(MovieList);
+
+export default hot(module)(connect(mapStateToProps)(MovieList));
