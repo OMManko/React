@@ -2,7 +2,7 @@ import React from "react";
 import { hot } from "react-hot-loader";
 import RadioGroup from "../shared/radioGroup/radioGroup";
 import "./searchResultsAddInfoPanel.scss";
-import { filterOptions, sortOptions } from '../../constants/constants';
+import { sortOptions } from '../../constants/constants';
 import PropTypes from "prop-types";
 import { changeSortOption } from "../../actions/actions";
 import connect from "react-redux/es/connect/connect";
