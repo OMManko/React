@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import MoviePoster from "../moviePoster/moviePoster";
 import { moviePosterSizes } from '../../constants/constants';
 import { fetchMovie } from "../../actions/actions";
-import connect from "react-redux/es/connect/connect";
+import { connect } from "react-redux";
 
 const MovieCard = ({ id, src, title, release, genres, selectMovie }) => {
     return (

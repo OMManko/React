@@ -3,7 +3,7 @@ import "./input.scss";
 import PropTypes from "prop-types";
 import { updateInputValue } from "../../../actions/actions";
 import { hot } from "react-hot-loader";
-import connect from "react-redux/es/connect/connect";
+import { connect } from "react-redux";
 
 class TextField extends React.Component {
     render () {

@@ -1,28 +1,31 @@
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import React from 'react';
 import MovieInfo from "../movieInfo/movieInfo";
-import MoviePoster from "../moviePoster/moviePoster";
+import configureStore from 'redux-mock-store';
+import { initialState } from "../../constants/constants";
+import { Provider } from "react-redux";
 
-const movieInfoMock = {
-    src: "https://cdn.cnn.com/cnnnext/dam/assets/190315113313-04-mafia-crime-families-have-evolved-file-restricted-use-super-tease.jpg",
-    title: "Pulp Fiction",
-    year: 1992,
-    genre: "Oscar-winning Movies",
-    duration: "154 min",
-    description: "Some descrition"
-};
+const mockStore = configureStore();
 
 let component;
+let store;
+
+const mockData = {
+    poster_path: "https://cdn.cnn.com/cnnnext/dam/assets/190315113313-04-mafia-crime-families-have-evolved-file-restricted-use-super-tease.jpg",
+    title: "Pulp Fiction",
+    release_date: "1980-05-20",
+    genres: ["Adventure", "Action", "Science Fiction"],
+    runtime: 154,
+    overview: "Some descrition"
+};
 
 describe('<MovieInfo />', () => {
     beforeEach(() => {
-        component = shallow(<MovieInfo movie = {movieInfoMock}/>);
-    });
-    it('should render movie info and match snapshot', () => {
-        expect(component).toMatchSnapshot();
+        store = mockStore(initialState);
+        component = mount(<Provider store={store}><MovieInfo movie = {mockData} /></Provider>);
     });
 
-    it('should contain movie poster', () => {
-        expect(component.find(MoviePoster).length).toEqual(1);
+    it('should render movie info and match snapshot', () => {
+        expect(component).toMatchSnapshot();
     });
 });

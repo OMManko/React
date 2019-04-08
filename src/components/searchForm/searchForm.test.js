@@ -1,15 +1,23 @@
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import React from 'react';
 import SearchForm from '../searchForm/searchForm';
 import TextField from "../shared/input/input";
 import RadioGroup from "../shared/radioGroup/radioGroup";
+import { Provider } from "react-redux";
+import { initialState } from "../../constants/constants";
+import configureStore from 'redux-mock-store';
+
+const mockStore = configureStore();
 
 let component;
+let store;
 
 describe('<SearchForm />', () => {
     beforeEach(() => {
-        component = shallow(<SearchForm/>);
+        store = mockStore(initialState);
+        component = mount(<Provider store={store}><SearchForm/></Provider>);
     });
+
     it('should render search form and match snapshot', () => {
         expect(component).toMatchSnapshot();
     });
@@ -20,11 +28,5 @@ describe('<SearchForm />', () => {
 
     it('should contain radio group', () => {
         expect(component.find(RadioGroup).length).toEqual(1);
-    });
-
-    it('should call function when button is clicked', () => {
-        const instance = component.instance();
-        instance.handleSearchClick(true);
-        expect(console.log("Start search"));
     });
 });

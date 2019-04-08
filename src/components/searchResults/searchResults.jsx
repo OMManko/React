@@ -4,7 +4,7 @@ import "./searchResults.scss";
 import MovieList from "../movieList/movieList";
 import NoResults from "../noResults/noResults";
 import PropTypes from "prop-types";
-import connect from "react-redux/es/connect/connect";
+import { connect } from "react-redux";
 
 
 class SearchResults extends React.PureComponent {

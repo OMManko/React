@@ -1,5 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Footer /> should contain logo 1`] = `ShallowWrapper {}`;
+exports[`<Header /> should contain logo 1`] = `ReactWrapper {}`;
 
-exports[`<Footer /> should render header and match snapshot 1`] = `ShallowWrapper {}`;
+exports[`<Header /> should render header and match snapshot 1`] = `ReactWrapper {}`;

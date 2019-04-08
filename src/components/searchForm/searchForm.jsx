@@ -1,6 +1,6 @@
 import React from "react";
 import { hot } from "react-hot-loader";
-import connect from "react-redux/es/connect/connect";
+import { connect } from "react-redux";
 import Button from "../shared/button/button";
 import TextField from "../shared/input/input";
 import RadioGroup from "../shared/radioGroup/radioGroup";

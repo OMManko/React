@@ -4,7 +4,7 @@ import "./movieInfo.scss";
 import PropTypes from "prop-types";
 import MoviePoster from "../moviePoster/moviePoster";
 import { moviePosterSizes } from '../../constants/constants';
-import connect from "react-redux/es/connect/connect";
+import { connect } from "react-redux";
 
 const MovieInfo = ({ movie }) => (
     <article className="movieInfo">

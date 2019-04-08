@@ -3,7 +3,7 @@ import { hot } from "react-hot-loader";
 import PropTypes from "prop-types";
 import MovieCard from "../movieCard/movieCard";
 import "./movieList.scss";
-import connect from "react-redux/es/connect/connect";
+import { connect } from "react-redux";
 
 const MovieList = ({ moviesList }) => (
     <div className="movieList">

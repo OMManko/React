@@ -4,12 +4,11 @@ import "./infoPanel.scss";
 import SearchForm from "../searchForm/searchForm";
 import MovieInfo from "../movieInfo/movieInfo";
 import PropTypes from "prop-types";
-import connect from "react-redux/es/connect/connect";
+import { connect } from "react-redux";
 
 class InfoPanel extends React.Component {
     render () {
         const {
-            movie,
             selectedMovieInfo
         } = this.props;
 
@@ -18,7 +17,7 @@ class InfoPanel extends React.Component {
                 <div className="container">
                     {Object.keys(selectedMovieInfo).length > 0 ?
                         (
-                            <MovieInfo movie={movie}/>
+                            <MovieInfo movie={selectedMovieInfo}/>
                         ) :
                         (
                             <SearchForm/>
@@ -30,7 +29,6 @@ class InfoPanel extends React.Component {
 }
 
 InfoPanel.propTypes = {
-    movie: PropTypes.object,
     selectedMovieInfo: PropTypes.object
 };
 

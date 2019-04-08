@@ -5,7 +5,7 @@ import "./searchResultsAddInfoPanel.scss";
 import { sortOptions } from '../../constants/constants';
 import PropTypes from "prop-types";
 import { changeSortOption } from "../../actions/actions";
-import connect from "react-redux/es/connect/connect";
+import { connect } from "react-redux";
 
 
 class SearchResultsAddInfoPanel extends React.Component {

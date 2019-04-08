@@ -5,7 +5,7 @@ import Button from "../../shared/button/button";
 import AppLogo from "../../shared/appLogo/appLogo";
 import PropTypes from "prop-types";
 import { resetSelectedMovie } from "../../../actions/actions";
-import connect from "react-redux/es/connect/connect";
+import { connect } from "react-redux";
 
 class Header extends React.Component {
     render () {
