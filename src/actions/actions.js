@@ -33,9 +33,7 @@ export const fetchMovies = (inputValue, filter) => (dispatch) => {
     return fetch(`${endPoint}?searchBy=${filter}&search=${inputValue}`)
         .then(res => res.json())
         .then(data => dispatch(setResults(data)))
-        .catch((e) => {
-            console.log(e);
-        });
+        .catch(console.log);
 };
 
 export const fetchMovie = (movieId) => (dispatch) => {
