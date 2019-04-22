@@ -23,7 +23,7 @@ const movieAppReducer = (state = initialState, action) => {
                 ...state,
                 searchInputValue: action.value
             };
-        case actionTypes.GET_SELECTED_MOVIE:
+        case actionTypes.SET_SELECTED_MOVIE:
             return {
                 ...state,
                 selectedMovieInfo: action.movie

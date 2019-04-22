@@ -36,9 +36,9 @@ describe('<movieAppReducer />', () => {
         expect(movieAppReducer(initialState, action)).toEqual(expectedState);
     });
 
-    it('should handle GET_SELECTED_MOVIE', () => {
+    it('should handle SET_SELECTED_MOVIE', () => {
         const selectedMovie = { id: 123, title: 'Test' };
-        const action = { type: actionTypes.GET_SELECTED_MOVIE, movie: selectedMovie };
+        const action = { type: actionTypes.SET_SELECTED_MOVIE, movie: selectedMovie };
         const expectedState = { ...initialState, selectedMovieInfo: selectedMovie };
         expect(movieAppReducer(initialState, action)).toEqual(expectedState);
     });

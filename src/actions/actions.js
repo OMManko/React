@@ -1,6 +1,6 @@
 import { endPoint, actionTypes } from "../constants/constants";
 
-export const showResults = results => ({
+export const setResults = results => ({
     type: actionTypes.SEARCH_MOVIES,
     results
 });
@@ -15,8 +15,8 @@ export const changeSortOption = option => ({
     option
 });
 
-export const getSelectedMovie = movie => ({
-    type: actionTypes.GET_SELECTED_MOVIE,
+export const setSelectedMovie = movie => ({
+    type: actionTypes.SET_SELECTED_MOVIE,
     movie
 });
 
@@ -32,7 +32,7 @@ export const updateInputValue = value => ({
 export const fetchMovies = (inputValue, filter) => (dispatch) => {
     return fetch(`${endPoint}?searchBy=${filter}&search=${inputValue}`)
         .then(res => res.json())
-        .then(data => dispatch(showResults(data)))
+        .then(data => dispatch(setResults(data)))
         .catch((e) => {
             console.log(e);
         });
@@ -41,8 +41,6 @@ export const fetchMovies = (inputValue, filter) => (dispatch) => {
 export const fetchMovie = (movieId) => (dispatch) => {
     return fetch(`${endPoint}/${movieId}`)
         .then(res => res.json())
-        .then(json => dispatch(getSelectedMovie(json)))
-        .catch((e) => {
-            console.log(e);
-        });
+        .then(json => dispatch(setSelectedMovie(json)))
+        .catch(console.log);
 };

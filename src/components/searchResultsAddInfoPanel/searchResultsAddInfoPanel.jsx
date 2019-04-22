@@ -33,10 +33,12 @@ class SearchResultsAddInfoPanel extends React.Component {
             }
         ];
 
+        const isMovieInfoExists = Object.keys(selectedMovieInfo).length > 0;
+
         return (
             <div className="searchResultsAddInfoPanel">
                 <div className="container">
-                    {(moviesList.length > 0 && Object.keys(selectedMovieInfo).length === 0) &&
+                    {(moviesList.length > 0 && !isMovieInfoExists) &&
                         (
                             <div className="searchResultsAddInfo">
                                 <p>{total} movies found</p>
@@ -47,7 +49,7 @@ class SearchResultsAddInfoPanel extends React.Component {
                                 />
                             </div>
                         )}
-                    {Object.keys(selectedMovieInfo).length > 0 &&
+                    {isMovieInfoExists &&
                         <div className="searchResultsAddInfo">
                             <div className="searchResultsAddInfo__displayInfo">
                                 <span>Films by</span>

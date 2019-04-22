@@ -5,20 +5,14 @@ import { updateInputValue } from "../../../actions/actions";
 import { hot } from "react-hot-loader";
 import { connect } from "react-redux";
 
-class TextField extends React.Component {
-    render () {
-        const { className, inputValue, handleInputChange } = this.props;
-
-        return (
-            <input
-                type="text"
-                className={className}
-                value={inputValue}
-                onChange={(changeEvent) => handleInputChange(changeEvent.target.value)}
-            />
-        );
-    }
-}
+const TextField = ({ className, inputValue, handleInputChange }) => (
+    <input
+        type="text"
+        className={className}
+        value={inputValue}
+        onChange={(changeEvent) => handleInputChange(changeEvent.target.value)}
+    />
+);
 
 TextField.propTypes = {
     className: PropTypes.string,

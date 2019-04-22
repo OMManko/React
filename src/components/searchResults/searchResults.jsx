@@ -20,7 +20,7 @@ class SearchResults extends React.PureComponent {
             return movie;
         });
 
-        moviesList.sort((option1, option2) => option2[selectedSortOption] - option1[selectedSortOption]);
+        formattedMoviesList.sort((option1, option2) => option2[selectedSortOption] - option1[selectedSortOption]);
 
         return (
             <div>

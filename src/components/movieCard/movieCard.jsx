@@ -35,11 +35,8 @@ MovieCard.defaultProps = {
     genres: ['Not determined']
 };
 
-const mapStateToProps = state => ({
-});
-
 const mapDispatchToProps = {
     selectMovie: fetchMovie
 };
 
-export default hot(module)(connect(mapStateToProps, mapDispatchToProps)(MovieCard));
+export default hot(module)(connect('', mapDispatchToProps)(MovieCard));

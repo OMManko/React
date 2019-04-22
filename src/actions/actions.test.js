@@ -34,7 +34,7 @@ describe('actions', () => {
             type: actionTypes.SEARCH_MOVIES,
             results: mockData
         };
-        expect(actions.showResults(mockData)).toEqual(expectedAction);
+        expect(actions.setResults(mockData)).toEqual(expectedAction);
     });
 
     it('should change search option', () => {
@@ -55,10 +55,10 @@ describe('actions', () => {
 
     it('should get selected movie info', () => {
         const expectedAction = {
-            type: actionTypes.GET_SELECTED_MOVIE,
+            type: actionTypes.SET_SELECTED_MOVIE,
             movie: mockMovie
         };
-        expect(actions.getSelectedMovie(mockMovie)).toEqual(expectedAction);
+        expect(actions.setSelectedMovie(mockMovie)).toEqual(expectedAction);
     });
 
     it('should reset selected movie info', () => {
@@ -124,7 +124,7 @@ describe('actions', () => {
 
 
         const expectedAction = {
-            type: actionTypes.GET_SELECTED_MOVIE,
+            type: actionTypes.SET_SELECTED_MOVIE,
             movie: mockMovie
         };
 
