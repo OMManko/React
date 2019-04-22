@@ -43,9 +43,9 @@ describe('<movieAppReducer />', () => {
         expect(movieAppReducer(initialState, action)).toEqual(expectedState);
     });
 
-    it('should handle RESET_SELECTED_MOVIE', () => {
+    it('should handle RESET_SEARCH', () => {
         const selectedMovie = { id: 123, title: 'Test' };
-        const action = { type: actionTypes.RESET_SELECTED_MOVIE, selectedMovieInfo: selectedMovie };
+        const action = { type: actionTypes.RESET_SEARCH, selectedMovieInfo: selectedMovie };
         const expectedState = { ...initialState, selectedMovieInfo: {} };
         expect(movieAppReducer(initialState, action)).toEqual(expectedState);
     });

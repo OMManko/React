@@ -20,8 +20,8 @@ export const setSelectedMovie = movie => ({
     movie
 });
 
-export const resetSelectedMovie = () => ({
-    type: actionTypes.RESET_SELECTED_MOVIE
+export const resetSearch = () => ({
+    type: actionTypes.RESET_SEARCH
 });
 
 export const updateInputValue = value => ({

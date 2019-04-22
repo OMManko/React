@@ -1,11 +1,11 @@
 import { applyMiddleware, createStore } from 'redux';
 import movieAppReducer from './reducers/reducers';
 import thunk from 'redux-thunk';
-import { persistStore, persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
+//import { persistStore, persistReducer } from 'redux-persist';
+//import storage from 'redux-persist/lib/storage';
 import { initialState } from "./constants/constants";
 
-const persistConfig = {
+/*const persistConfig = {
     key: 'root',
     storage: storage
 };
@@ -13,4 +13,6 @@ const persistConfig = {
 const pReducer = persistReducer(persistConfig, movieAppReducer);
 
 export const store = createStore(pReducer, initialState, applyMiddleware(thunk));
-export const persistor = persistStore(store);
+export const persistor = persistStore(store);*/
+
+export const store = createStore(movieAppReducer, initialState, applyMiddleware(thunk));

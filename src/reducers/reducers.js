@@ -28,10 +28,12 @@ const movieAppReducer = (state = initialState, action) => {
                 ...state,
                 selectedMovieInfo: action.movie
             };
-        case actionTypes.RESET_SELECTED_MOVIE:
+        case actionTypes.RESET_SEARCH:
             return {
                 ...state,
-                selectedMovieInfo: {}
+                selectedMovieInfo: {},
+                searchInputValue: '',
+                moviesList: []
             };
         default:
             return state;

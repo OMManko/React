@@ -4,13 +4,14 @@ import "./header.scss";
 import Button from "../../shared/button/button";
 import AppLogo from "../../shared/appLogo/appLogo";
 import PropTypes from "prop-types";
-import { resetSelectedMovie } from "../../../actions/actions";
+import { resetSearch } from "../../../actions/actions";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 class Header extends React.Component {
     render () {
         const {
-            resetSelectedMovie,
+            resetSearch,
             selectedMovieInfo
         } = this.props;
 
@@ -20,7 +21,10 @@ class Header extends React.Component {
                     <div className="header__info">
                         <AppLogo/>
                         {Object.keys(selectedMovieInfo).length > 0 &&
-                            <Button variant="btn--secondary" label="Search" handleAction={resetSelectedMovie}/>}
+                            <Link to={`/`}>
+                                <Button variant="btn--secondary" label="Search" handleAction={resetSearch}/>
+                            </Link>
+                        }
                     </div>
                 </div>
             </header>
@@ -29,7 +33,7 @@ class Header extends React.Component {
 }
 
 Header.propTypes = {
-    resetSelectedMovie: PropTypes.func,
+    resetSearch: PropTypes.func,
     selectedMovieInfo: PropTypes.object
 };
 
@@ -38,7 +42,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-    resetSelectedMovie: resetSelectedMovie
+    resetSearch: resetSearch
 };
 
 export default hot(module)(connect(mapStateToProps, mapDispatchToProps)(Header));
