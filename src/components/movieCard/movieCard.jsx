@@ -39,4 +39,4 @@ const mapDispatchToProps = {
     selectMovie: fetchMovie
 };
 
-export default hot(module)(connect('', mapDispatchToProps)(MovieCard));
+export default hot(module)(connect(null, mapDispatchToProps)(MovieCard));
