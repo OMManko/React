@@ -9,7 +9,6 @@ const TextField = ({ className, inputValue, handleInputChange }) => (
     <input
         type="text"
         className={className}
-        value={inputValue}
         onChange={(changeEvent) => handleInputChange(changeEvent.target.value)}
     />
 );

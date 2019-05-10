@@ -63,7 +63,7 @@ describe('actions', () => {
 
     it('should reset selected movie info', () => {
         const expectedAction = {
-            type: actionTypes.RESET_SELECTED_MOVIE
+            type: actionTypes.RESET_SEARCH
         };
         expect(actions.resetSelectedMovie()).toEqual(expectedAction);
     });

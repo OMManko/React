@@ -4,30 +4,36 @@ import "./movieCard.scss";
 import PropTypes from "prop-types";
 import MoviePoster from "../moviePoster/moviePoster";
 import { moviePosterSizes } from '../../constants/constants';
-import { fetchMovie } from "../../actions/actions";
+import { setSelectedMovie } from "../../actions/actions";
 import { connect } from "react-redux";
+import { Link, withRouter } from 'react-router-dom';
 
-const MovieCard = ({ id, src, title, release, genres, selectMovie }) => {
-    return (
-        <article className="movieCard" onClick={() => selectMovie(id)}>
-            <MoviePoster src={src} size={moviePosterSizes.MEDIUM}/>
-            <div className="movieCard__main">
-                <div className="movieCard__title">{title}</div>
-                <span className="movieCard__year">{release}</span>
-            </div>
-            <div className="movieCard__genre">{genres.join(', ')}</div>
-        </article>
-    );
-};
+class MovieCard extends React.PureComponent {
+    render () {
+        const {
+            movie,
+            setSelectedMovie
+        } = this.props;
+
+        return (
+            <article className="movieCard" onClick={() => setSelectedMovie(movie)}>
+                <MoviePoster src={movie.poster_path} size={moviePosterSizes.MEDIUM}/>
+                <div className="movieCard__main">
+                    <Link className="movieCard__title" to={`/film/${movie.id}`}>
+                        {movie.title}
+                    </Link>
+                    <span className="movieCard__year">{movie.release}</span>
+                </div>
+                <div className="movieCard__genre">{movie.genres.join(', ')}</div>
+            </article>
+        );
+    }
+}
 
 MovieCard.propTypes = {
-    id: PropTypes.number,
-    title: PropTypes.string,
-    release: PropTypes.number,
-    genres: PropTypes.array,
-    src: PropTypes.string,
-    rating: PropTypes.number,
-    selectMovie: PropTypes.func
+    setSelectedMovie: PropTypes.func,
+    movie: PropTypes.object,
+    history: PropTypes.object
 };
 
 MovieCard.defaultProps = {
@@ -36,7 +42,7 @@ MovieCard.defaultProps = {
 };
 
 const mapDispatchToProps = {
-    selectMovie: fetchMovie
+    setSelectedMovie: setSelectedMovie
 };
 
-export default hot(module)(connect(null, mapDispatchToProps)(MovieCard));
+export default hot(module)(withRouter(connect(null, mapDispatchToProps)(MovieCard)));

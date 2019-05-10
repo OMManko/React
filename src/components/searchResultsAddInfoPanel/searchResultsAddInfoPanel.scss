@@ -1,10 +1,12 @@
 @import "../../styles/variables";
 
 .searchResultsAddInfoPanel {
-  padding: 20px 0;
+  height: 56px;
   background-color: $c-ultra-light-gray;
   color: $c-gray;
   font-weight: bold;
+  display: flex;
+  align-items: center;
 }
 
 .searchResultsAddInfo {

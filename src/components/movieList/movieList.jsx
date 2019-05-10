@@ -9,13 +9,9 @@ const MovieList = ({ movies }) => (
         {movies.map((movie, i) => {
             return (
                 <MovieCard
+                    movie={movie}
                     key={i}
-                    id={movie.id}
-                    src={movie.poster_path}
-                    title={movie.title}
-                    release={movie.release}
-                    rating={movie.vote_average}
-                    genres={movie.genres}/>
+                />
             );
         })}
     </div>

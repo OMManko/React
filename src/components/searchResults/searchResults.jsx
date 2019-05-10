@@ -14,25 +14,26 @@ class SearchResults extends React.PureComponent {
             selectedSortOption
         } = this.props;
 
-
         const formattedMoviesList = moviesList.map((movie) => {
             movie.release = new Date(movie.release_date).getUTCFullYear();
             return movie;
         });
 
-        formattedMoviesList.sort((option1, option2) => option2[selectedSortOption] - option1[selectedSortOption]);
+        const sortedMovieList = formattedMoviesList.sort((option1, option2) => option2[selectedSortOption] - option1[selectedSortOption]);
 
         return (
             <div>
-                <div className="searchResults__wrapper">
-                    <div className="container">
-                        <div className="searchResults">
-                            { moviesList.length > 0 ?
-                                (<MovieList movies = {formattedMoviesList}/>) : (<NoResults/>)
-                            }
+                { moviesList.length > 0 ?
+                    (
+                        <div className="searchResults__wrapper">
+                            <div className="container">
+                                <div className="searchResults">
+                                    <MovieList movies = {sortedMovieList}/>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
+                    ) : (<NoResults/>)
+                }
             </div>
 
         );

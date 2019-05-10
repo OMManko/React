@@ -9,7 +9,8 @@ module.exports = (env, options) => {
         entry: "./src/index.js",
         output: {
             path: path.resolve(__dirname, "./public"),
-            filename: "script.js"
+            filename: "script.js",
+            publicPath: '/'
         },
         mode: "development",
         module: {
@@ -49,7 +50,8 @@ module.exports = (env, options) => {
         devServer: {
             contentBase: path.join(__dirname, "public/"),
             port: 3000,
-            hotOnly: true
+            hot: true,
+            historyApiFallback: true
         },
         plugins: [
             new webpack.HotModuleReplacementPlugin(),
