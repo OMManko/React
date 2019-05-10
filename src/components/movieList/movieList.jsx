@@ -10,10 +10,12 @@ const MovieList = ({ movies }) => (
             return (
                 <MovieCard
                     key={i}
-                    src={movie.src}
+                    id={movie.id}
+                    src={movie.poster_path}
                     title={movie.title}
-                    year={movie.year}
-                    genre={movie.genre}/>
+                    release={movie.release}
+                    rating={movie.vote_average}
+                    genres={movie.genres}/>
             );
         })}
     </div>
@@ -21,10 +23,6 @@ const MovieList = ({ movies }) => (
 
 MovieList.propTypes = {
     movies: PropTypes.array
-};
-
-MovieList.defaultProps = {
-    movies: []
 };
 
 export default hot(module)(MovieList);

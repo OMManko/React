@@ -1,13 +1,20 @@
-import { mount, shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import React from 'react';
 import MovieCard from './movieCard';
 import MoviePoster from "../moviePoster/moviePoster";
+import { Provider } from "react-redux";
+import { initialState } from "../../constants/constants";
+import configureStore from 'redux-mock-store';
+
+const mockStore = configureStore();
 
 let component;
+let store;
 
 describe('<MovieCard />', () => {
     beforeEach(() => {
-        component = shallow(<MovieCard />);
+        store = mockStore(initialState);
+        component = mount(<Provider store={store}><MovieCard/></Provider>);
     });
 
     it('should render radio group and match snapshot', () => {
@@ -15,7 +22,6 @@ describe('<MovieCard />', () => {
     });
 
     it('should contain movie poster', () => {
-        component = mount(<MovieCard />);
         expect(component.find(MoviePoster).length).toEqual(1);
     });
 });

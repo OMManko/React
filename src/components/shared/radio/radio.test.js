@@ -30,17 +30,17 @@ describe('<Radio />', () => {
     });
 
     it('should set checked property if true is passed', () => {
-        const defaultChecked = true;
-        const component = shallow(<Radio defaultChecked={defaultChecked}/>);
+        const checked = true;
+        const component = shallow(<Radio checked={checked}/>);
         expect(component).toMatchSnapshot();
-        expect(component.find('input').props().defaultChecked).toEqual(defaultChecked);
+        expect(component.find('input').props().checked).toEqual(checked);
     });
 
 
-    it('should log to console radio id on change event', () => {
+/*    it('should log to console radio id on change event', () => {
         const id = 'test';
         const component = shallow(<Radio id={id} />);
         component.find('input').simulate('change');
         expect(console.log(`Selected property is ${component.find('input').props().id}`));
-    });
+    });*/
 });

@@ -4,17 +4,13 @@ import "./radio.scss";
 import PropTypes from "prop-types";
 
 class Radio extends React.Component {
-    constructor (props) {
-        super(props);
-        this.state = {};
-    }
-
-    handleRadioChange = () => {
-        console.log(`Selected property is ${this.props.id}`);
-    };
-
     render () {
-        const { name, id, defaultChecked, label } = this.props;
+        const { name, id, checked, label, handleAction } = this.props;
+
+        const handleOptionChange = (changeEvent) => {
+            handleAction(changeEvent.target.id);
+        };
+
         return (
             <div className="formRadio">
                 <input
@@ -22,8 +18,8 @@ class Radio extends React.Component {
                     type="radio"
                     name={name}
                     id={id}
-                    defaultChecked={defaultChecked}
-                    onChange={this.handleRadioChange}
+                    checked ={checked}
+                    onChange={handleOptionChange}
                 />
                 <label className="formRadio__label" htmlFor={id}>
                     {label}
@@ -38,7 +34,8 @@ Radio.propTypes = {
     id: PropTypes.string,
     label: PropTypes.string,
     additionalClassName: PropTypes.string,
-    defaultChecked: PropTypes.bool
+    checked: PropTypes.bool,
+    handleAction: PropTypes.func
 };
 
 export default hot(module)(Radio);

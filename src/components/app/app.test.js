@@ -4,14 +4,20 @@ import App from './app';
 import Header from '../layout/header/header';
 import Main from '../layout/main/main';
 import Footer from '../layout/footer/footer';
+import { Provider } from "react-redux";
+import { initialState } from "../../constants/constants";
+import configureStore from 'redux-mock-store';
+
+const mockStore = configureStore();
 
 let component;
+let store;
+
 
 describe('<App />', () => {
     beforeEach(() => {
-        component = mount(
-            <App />
-        );
+        store = mockStore(initialState);
+        component = mount(<Provider store={store}><App/></Provider>);
     });
 
     afterEach(() => {
@@ -19,7 +25,6 @@ describe('<App />', () => {
     });
 
     it('should render app and match snapshot', () => {
-        component = shallow(<App/>);
         expect(component).toMatchSnapshot();
     });
 

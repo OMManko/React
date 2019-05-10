@@ -4,28 +4,39 @@ import "./movieCard.scss";
 import PropTypes from "prop-types";
 import MoviePoster from "../moviePoster/moviePoster";
 import { moviePosterSizes } from '../../constants/constants';
+import { fetchMovie } from "../../actions/actions";
+import { connect } from "react-redux";
 
-const MovieCard = ({ src, title, year, genre }) => (
-    <article className="movieCard">
-        <MoviePoster src={src} size={moviePosterSizes.MEDIUM}/>
-        <div className="movieCard__main">
-            <a href="#" className="movieCard__title">{title}</a>
-            <span className="movieCard__year">{year}</span>
-        </div>
-        <div className="movieCard__genre">{genre}</div>
-    </article>
-);
+const MovieCard = ({ id, src, title, release, genres, selectMovie }) => {
+    return (
+        <article className="movieCard" onClick={() => selectMovie(id)}>
+            <MoviePoster src={src} size={moviePosterSizes.MEDIUM}/>
+            <div className="movieCard__main">
+                <div className="movieCard__title">{title}</div>
+                <span className="movieCard__year">{release}</span>
+            </div>
+            <div className="movieCard__genre">{genres.join(', ')}</div>
+        </article>
+    );
+};
 
 MovieCard.propTypes = {
+    id: PropTypes.number,
     title: PropTypes.string,
-    year: PropTypes.number,
-    genre: PropTypes.string,
-    src: PropTypes.string
+    release: PropTypes.number,
+    genres: PropTypes.array,
+    src: PropTypes.string,
+    rating: PropTypes.number,
+    selectMovie: PropTypes.func
 };
 
 MovieCard.defaultProps = {
     year: 2000,
-    genre: "Not determined"
+    genres: ['Not determined']
 };
 
-export default hot(module)(MovieCard);
+const mapDispatchToProps = {
+    selectMovie: fetchMovie
+};
+
+export default hot(module)(connect(null, mapDispatchToProps)(MovieCard));

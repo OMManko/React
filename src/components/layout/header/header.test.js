@@ -1,14 +1,22 @@
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import React from 'react';
 import Header from '../header/header';
 import AppLogo from "../../shared/appLogo/appLogo";
+import { Provider } from "react-redux";
+import { initialState } from "../../../constants/constants";
+import configureStore from 'redux-mock-store';
+
+const mockStore = configureStore();
 
 let component;
+let store;
 
-describe('<Footer />', () => {
+describe('<Header />', () => {
     beforeEach(() => {
-        component = shallow(<Header/>);
+        store = mockStore(initialState);
+        component = mount(<Provider store={store}><Header/></Provider>);
     });
+
     it('should render header and match snapshot', () => {
         expect(component).toMatchSnapshot();
     });
@@ -16,11 +24,5 @@ describe('<Footer />', () => {
     it('should contain logo', () => {
         expect(component).toMatchSnapshot();
         expect(component.contains(<AppLogo/>)).toBe(true);
-    });
-
-    it('should call function when button is clicked', () => {
-        const instance = component.instance();
-        instance.handleSearchFormOpen(true);
-        expect(console.log("Open search form"));
     });
 });

@@ -9,6 +9,7 @@ describe('<Footer />', () => {
     beforeEach(() => {
         component = shallow(<Footer/>);
     });
+
     it('should render footer and match snapshot', () => {
         expect(component).toMatchSnapshot();
     });
