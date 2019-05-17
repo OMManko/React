@@ -1,15 +1,15 @@
 import { all } from 'redux-saga/effects';
 
 import {
-    moviesSaga
+  moviesSaga,
 } from './movies';
 
-function *rootSaga () {
-    yield all([
-        moviesSaga()
-    ]);
+function* rootSaga() {
+  yield all([
+    moviesSaga(),
+  ]);
 }
 
 export {
-    rootSaga
+  rootSaga,
 };
