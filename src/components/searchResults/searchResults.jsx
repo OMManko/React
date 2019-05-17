@@ -1,30 +1,35 @@
-import React from "react";
-import { hot } from "react-hot-loader";
-import "./searchResults.scss";
-import MovieList from "../movieList/movieList";
-import NoResults from "../noResults/noResults";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
+// @flow
 
+import React from 'react';
+import { hot } from 'react-hot-loader';
+import './searchResults.scss';
+import { connect } from 'react-redux';
+import MovieList from '../movieList/movieList';
+import NoResults from '../noResults/noResults';
 
-class SearchResults extends React.PureComponent {
-    render () {
-        const {
-            moviesList,
-            selectedSortOption
-        } = this.props;
+type Props = {
+    moviesList: Array<Content>,
+    selectedSortOption: string,
+};
 
-        const formattedMoviesList = moviesList.map((movie) => {
-            movie.release = new Date(movie.release_date).getUTCFullYear();
-            return movie;
-        });
+class SearchResults extends React.PureComponent<Props> {
+  render() {
+    const {
+      moviesList,
+      selectedSortOption,
+    } = this.props;
 
-        const sortedMovieList = formattedMoviesList.sort((option1, option2) => option2[selectedSortOption] - option1[selectedSortOption]);
+    const formattedMoviesList = moviesList.map((movie) => {
+      movie.release = new Date(movie.release_date).getUTCFullYear();
+      return movie;
+    });
 
-        return (
+    const sortedMovieList = formattedMoviesList.sort((option1, option2) => option2[selectedSortOption] - option1[selectedSortOption]);
+
+    return (
             <div>
-                { moviesList.length > 0 ?
-                    (
+                { moviesList.length > 0
+                  ? (
                         <div className="searchResults__wrapper">
                             <div className="container">
                                 <div className="searchResults">
@@ -32,24 +37,17 @@ class SearchResults extends React.PureComponent {
                                 </div>
                             </div>
                         </div>
-                    ) : (<NoResults/>)
+                  ) : (<NoResults/>)
                 }
             </div>
 
-        );
-    }
+    );
+  }
 }
 
-SearchResults.propTypes = {
-    moviesList: PropTypes.array,
-    selectedSortOption: PropTypes.string
-};
-
 const mapStateToProps = state => ({
-    moviesList: state.moviesList,
-    selectedSortOption: state.selectedSortOption
+  moviesList: state.moviesList,
+  selectedSortOption: state.selectedSortOption,
 });
 
 export default hot(module)(connect(mapStateToProps)(SearchResults));
-
-

@@ -22,13 +22,13 @@
   }
 }
 
-.btn--primary {
+.btnPrimary {
   background-color: $c-pink;
   @extend .btn;
   @include hover($c-pink);
 }
 
-.btn--secondary {
+.btnSecondary {
   @extend .btn;
   background-color: $c-white;
   border: 1px solid $c-pink;

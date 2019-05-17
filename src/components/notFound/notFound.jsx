@@ -1,6 +1,6 @@
-import React from "react";
-import { hot } from "react-hot-loader";
-import "./notFound.scss";
+import React from 'react';
+import { hot } from 'react-hot-loader';
+import './notFound.scss';
 
 const NotFound = () => (
     <div className="container">

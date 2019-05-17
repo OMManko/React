@@ -1,22 +1,27 @@
+// @flow
+
 import React from 'react';
 import './input.scss';
-import PropTypes from 'prop-types';
 import { hot } from 'react-hot-loader';
 import { connect } from 'react-redux';
 import { updateInputValue } from '../../../actions/actions';
 
-const TextField = ({ className, handleInputChange }) => (
+type Props = {
+    className: string,
+    inputValue: string,
+    handleInputChange: Function,
+};
+
+const TextField = (props: Props) => (
     <input
         type="text"
-        className={className}
-        onChange={changeEvent => handleInputChange(changeEvent.target.value)}
+        className={props.className}
+        onChange={changeEvent => props.handleInputChange(changeEvent.target.value)}
     />
 );
 
 TextField.propTypes = {
-  className: PropTypes.string,
-  inputValue: PropTypes.string,
-  handleInputChange: PropTypes.func,
+
 };
 
 const mapStateToProps = state => ({

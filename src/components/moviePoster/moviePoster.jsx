@@ -1,24 +1,25 @@
-import React from "react";
-import { hot } from "react-hot-loader";
-import "./moviePoster.scss";
-import PropTypes from "prop-types";
-import { moviePosterSizes } from '../../constants/constants';
-import defaultImage from "../../static/download.jpg";
+// @flow
 
-const MoviePoster = ({ src, size }) => (
-    <div className={`moviePoster__imgWrapper  ${size}`}>
-        <img className="moviePoster__img" src={src}/>
+import React from 'react';
+import { hot } from 'react-hot-loader';
+import './moviePoster.scss';
+import { moviePosterSizes } from '../../constants/constants';
+import defaultImage from '../../static/download.jpg';
+
+type Props = {
+    src: string,
+    size: string
+};
+
+const MoviePoster = (props: Props) => (
+    <div className={`moviePoster__imgWrapper  ${props.size}`}>
+        <img className="moviePoster__img" src={props.src}/>
     </div>
 );
 
-MoviePoster.propTypes = {
-    src: PropTypes.string,
-    size: PropTypes.string
-};
-
 MoviePoster.defaultProps = {
-    src: defaultImage,
-    size: moviePosterSizes.SMALL
+  src: defaultImage,
+  size: moviePosterSizes.SMALL,
 };
 
 export default hot(module)(MoviePoster);

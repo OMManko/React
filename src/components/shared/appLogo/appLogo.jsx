@@ -1,6 +1,6 @@
-import React from "react";
-import { hot } from "react-hot-loader";
-import "./appLogo.scss";
+import React from 'react';
+import { hot } from 'react-hot-loader';
+import './appLogo.scss';
 
 
 const AppLogo = () => (

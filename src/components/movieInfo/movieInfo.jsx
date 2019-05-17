@@ -1,28 +1,36 @@
-import React from "react";
-import { hot } from "react-hot-loader";
-import "./movieInfo.scss";
-import PropTypes from "prop-types";
-import MoviePoster from "../moviePoster/moviePoster";
+// @flow
+
+import React from 'react';
+import { hot } from 'react-hot-loader';
+import './movieInfo.scss';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import MoviePoster from '../moviePoster/moviePoster';
 import { moviePosterSizes } from '../../constants/constants';
-import { connect } from "react-redux";
-import { fetchMovie } from "../../actions/actions";
-import { withRouter } from "react-router-dom";
+import { fetchMovie } from '../../actions/actions';
 
-class MovieInfo extends React.Component {
-    componentDidMount () {
-        const id = +this.props.match.params.id;
-        this.props.selectMovie(id);
-    }
+type Props = {
+    movie: Object,
+    selectMovie: Function,
+    match: Object,
+    params: Object,
+};
 
-    render () {
-        const {
-            movie
-        } = this.props;
+class MovieInfo extends React.Component<Props> {
+  componentDidMount() {
+    const id = +this.props.match.params.id;
+    this.props.selectMovie(id);
+  }
 
-        const genres = movie.genres && movie.genres.join(', ');
-        const year = movie.release_date && new Date(movie.release_date).getUTCFullYear();
+  render() {
+    const {
+      movie,
+    } = this.props;
 
-        return (
+    const genres = movie.genres && movie.genres.join(', ');
+    const year = movie.release_date && new Date(movie.release_date).getUTCFullYear();
+
+    return (
             <article className="movieInfo">
                 <MoviePoster src={movie.poster_path} size={moviePosterSizes.SMALL}/>
                 <div className="movieInfo__main">
@@ -35,26 +43,16 @@ class MovieInfo extends React.Component {
                     <div className="movieInfo__description">{movie.overview}</div>
                 </div>
             </article>
-        );
-    }
+    );
+  }
 }
 
-
-MovieInfo.propTypes = {
-    movie: PropTypes.object,
-    selectMovie: PropTypes.func,
-    match: PropTypes.object,
-    params: PropTypes.object
-};
-
 const mapStateToProps = state => ({
-    movie: state.selectedMovieInfo
+  movie: state.selectedMovieInfo,
 });
 
 const mapDispatchToProps = {
-    selectMovie: fetchMovie
+  selectMovie: fetchMovie,
 };
 
 export default hot(module)(withRouter(connect(mapStateToProps, mapDispatchToProps)(MovieInfo)));
-
-

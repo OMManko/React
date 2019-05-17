@@ -1,6 +1,6 @@
-import React from "react";
-import { hot } from "react-hot-loader";
-import "./noResults.scss";
+import React from 'react';
+import { hot } from 'react-hot-loader';
+import './noResults.scss';
 
 const NoResults = () => (
     <div className="container">

@@ -1,15 +1,16 @@
-import React from "react";
-import "./button.scss";
-import PropTypes from "prop-types";
+// @flow
 
-const Button = ({ variant, handleAction, label }) => (
-    <button className={variant} onClick={handleAction}> {label} </button>
-);
+import React from 'react';
+import './button.scss';
 
-Button.propTypes = {
-    label: PropTypes.string,
-    variant: PropTypes.string,
-    handleAction: PropTypes.func
+type Props = {
+    label: string,
+    variant: string,
+    handleAction: Function,
 };
+
+const Button = (props: Props) => (
+    <button className={props.variant} onClick={props.handleAction}> {props.label} </button>
+);
 
 export default Button;
