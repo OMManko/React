@@ -10,6 +10,7 @@ type Props = {
     className: string,
     inputValue: string,
     handleInputChange: Function,
+    handleEnterAction: Function
 };
 
 const TextField = (props: Props) => (
@@ -17,6 +18,7 @@ const TextField = (props: Props) => (
         type="text"
         className={props.className}
         onChange={changeEvent => props.handleInputChange(changeEvent.target.value)}
+        onKeyPress={event => event.key === 'Enter' && props.handleEnterAction()}
     />
 );
 

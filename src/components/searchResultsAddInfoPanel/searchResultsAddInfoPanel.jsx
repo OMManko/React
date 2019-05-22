@@ -7,6 +7,11 @@ import RadioGroup from '../shared/radioGroup/radioGroup';
 import './searchResultsAddInfoPanel.scss';
 import { sortOptions } from '../../constants/constants';
 import { changeSortOption } from '../../actions/actions';
+import {
+  selectMoviesFound, selectMoviesList, selectFilterOption,
+  selectSortOption, selectSearchInputValue, selectMovieInfo,
+} from '../../selectors/selectors';
+import { createStructuredSelector } from 'reselect';
 
 type Props = {
     total: number,
@@ -14,7 +19,7 @@ type Props = {
     selectedFilterOption: string,
     searchInputValue: string,
     selectedMovieInfo: Object,
-    moviesList: Array<Content>,
+    moviesList: Array,
     changeCurrentSortOption: Function,
 };
 
@@ -43,12 +48,11 @@ class SearchResultsAddInfoPanel extends React.Component<Props> {
       },
     ];
 
-    const isMovieInfoExists = Object.keys(selectedMovieInfo).length > 0;
 
     return (
             <div className="searchResultsAddInfoPanel">
                 <div className="container">
-                    {(moviesList.length > 0 && !isMovieInfoExists)
+                    {(moviesList.size > 0 && selectedMovieInfo.size === 0)
                         && (
                             <div className="searchResultsAddInfo">
                                 <p>{total} movies found</p>
@@ -59,7 +63,8 @@ class SearchResultsAddInfoPanel extends React.Component<Props> {
                                 />
                             </div>
                         )}
-                    {isMovieInfoExists
+
+                    {selectedMovieInfo.size > 0
                         && <div className="searchResultsAddInfo">
                             <div className="searchResultsAddInfo__displayInfo">
                                 <span>Films by</span>
@@ -73,13 +78,13 @@ class SearchResultsAddInfoPanel extends React.Component<Props> {
   }
 }
 
-const mapStateToProps = state => ({
-  total: state.moviesFound,
-  moviesList: state.moviesList,
-  selectedSortOption: state.selectedSortOption,
-  selectedFilterOption: state.selectedFilterOption,
-  searchInputValue: state.searchInputValue,
-  selectedMovieInfo: state.selectedMovieInfo,
+const mapStateToProps = createStructuredSelector({
+  total: selectMoviesFound,
+  moviesList: selectMoviesList,
+  selectedSortOption: selectSortOption,
+  selectedFilterOption: selectFilterOption,
+  searchInputValue: selectSearchInputValue,
+  selectedMovieInfo: selectMovieInfo,
 });
 
 const mapDispatchToProps = {

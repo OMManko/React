@@ -5,33 +5,38 @@ import { hot } from 'react-hot-loader';
 import './movieCard.scss';
 import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
+import { Map } from 'immutable';
 import MoviePoster from '../moviePoster/moviePoster';
 import { moviePosterSizes } from '../../constants/constants';
 import { setSelectedMovie } from '../../actions/actions';
 
 type Props = {
     setSelectedMovie: Function,
-    movie: Object,
+    movie: Map<Object>,
     history: Object
 };
 
 class MovieCard extends React.PureComponent<Props> {
   render() {
     const {
-      movie
+      movie,
+      setSelectedMovie,
     } = this.props;
 
     return (
-            <article className="movieCard" onClick={() => setSelectedMovie(movie)}>
-                <MoviePoster src={movie.poster_path} size={moviePosterSizes.MEDIUM}/>
-                <div className="movieCard__main">
-                    <Link className="movieCard__title" to={`/film/${movie.id}`}>
-                        {movie.title}
-                    </Link>
-                    <span className="movieCard__year">{movie.release}</span>
-                </div>
-                <div className="movieCard__genre">{movie.genres.join(', ')}</div>
-            </article>
+        <article className="movieCard" onClick={() => setSelectedMovie(movie)}>
+            <MoviePoster src={movie.get('poster_path')} size={moviePosterSizes.MEDIUM}/>
+            <div className="movieCard__main">
+                <Link className="movieCard__title" to={`/film/${movie.get('id')}`}>
+                    {movie.get('title')}
+                </Link>
+                <span className="movieCard__year">{movie.get('release')}</span>
+            </div>
+
+            <div className="movieCard__genre">{movie.get('genres').join(', ')}</div>
+
+        </article>
+
     );
   }
 }

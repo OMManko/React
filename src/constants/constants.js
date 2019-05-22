@@ -1,3 +1,5 @@
+import { fromJS } from 'immutable';
+
 export const endPoint = 'http://react-cdp-api.herokuapp.com/movies';
 
 export const moviePosterSizes = {
@@ -27,11 +29,11 @@ export const actionTypes = {
   FETCH_MOVIE: 'FETCH_MOVIE',
 };
 
-export const initialState = {
+export const initialState = fromJS({
   moviesList: [],
   moviesFound: 0,
   searchInputValue: '',
   selectedSortOption: sortOptions.RELEASE,
   selectedFilterOption: filterOptions.TITLE,
   selectedMovieInfo: {},
-};
+});

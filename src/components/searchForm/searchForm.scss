@@ -8,9 +8,19 @@
 }
 
 .searchForm__controls {
-  display: flex;
-  justify-content: space-between;
+
   margin-top: 30px;
+  @media screen and (min-width: $tablet) {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .formRadio__groupWrapper {
+    margin-bottom: 20px;
+    @media screen and (min-width: $tablet) {
+      margin-bottom: 0;
+    }
+  }
 
   .formRadio__groupTitle {
     text-transform: uppercase;

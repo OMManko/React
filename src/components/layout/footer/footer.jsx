@@ -3,7 +3,6 @@ import { hot } from "react-hot-loader";
 import "./footer.scss";
 import AppLogo from "../../shared/appLogo/appLogo";
 
-
 const Footer = () => (
     <footer className="footer">
         <div className="container">

@@ -1,4 +1,10 @@
+@import "../../styles/variables";
+
 .movieList {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  @media screen and (min-width: $tablet) {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
 }

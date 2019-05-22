@@ -5,9 +5,11 @@ import { hot } from 'react-hot-loader';
 import './header.scss';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { createStructuredSelector } from 'reselect';
 import Button from '../../shared/button/button';
 import AppLogo from '../../shared/appLogo/appLogo';
 import { resetSearch } from '../../../actions/actions';
+import { selectMovieInfo, selectMoviesList, selectSortOption } from '../../../selectors/selectors';
 
 type Props = {
     resetSearch: Function,
@@ -18,6 +20,7 @@ class Header extends React.Component<Props> {
   render() {
     const {
       selectedMovieInfo,
+      resetSearch,
     } = this.props;
 
     return (
@@ -25,8 +28,8 @@ class Header extends React.Component<Props> {
                 <div className="container">
                     <div className="header__info">
                         <AppLogo/>
-                        {Object.keys(selectedMovieInfo).length > 0
-                            && <Link to={'/'}>
+                        { selectedMovieInfo.size > 0
+                        && <Link to={'/'}>
                                 <Button variant="btnSecondary" label="Search" handleAction={resetSearch}/>
                             </Link>
                         }
@@ -37,8 +40,8 @@ class Header extends React.Component<Props> {
   }
 }
 
-const mapStateToProps = state => ({
-  selectedMovieInfo: state.selectedMovieInfo,
+const mapStateToProps = createStructuredSelector({
+  selectedMovieInfo: selectMovieInfo,
 });
 
 const mapDispatchToProps = {

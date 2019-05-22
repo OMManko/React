@@ -4,13 +4,15 @@ import React from 'react';
 import { hot } from 'react-hot-loader';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { List } from "immutable";
+import { List } from 'immutable';
+import { createStructuredSelector } from 'reselect';
 import Button from '../shared/button/button';
 import TextField from '../shared/input/input';
 import RadioGroup from '../shared/radioGroup/radioGroup';
 import { filterOptions } from '../../constants/constants';
 import { changeSearchOption, fetchMovies, updateInputValue } from '../../actions/actions';
 import './searchForm.scss';
+import { selectFilterOption, selectSearchInputValue } from '../../selectors/selectors';
 
 type Props = {
     inputValue: string,
@@ -60,7 +62,8 @@ class SearchForm extends React.Component<Props> {
     return (
             <div className="searchForm">
                 <h2 className="searchForm__title">Find your movie</h2>
-                <TextField className="formControl"/>
+                <TextField className="formControl" handleEnterAction={handleSearchMovies}
+                />
                 <div className="searchForm__controls">
                     <RadioGroup title="Search by"
                         name="searchByField"
@@ -74,9 +77,9 @@ class SearchForm extends React.Component<Props> {
   }
 }
 
-const mapStateToProps = state => ({
-  selectedFilterOption: state.selectedFilterOption,
-  inputValue: state.searchInputValue,
+const mapStateToProps = createStructuredSelector({
+  selectedFilterOption: selectFilterOption,
+  inputValue: selectSearchInputValue,
 });
 
 const mapDispatchToProps = {
