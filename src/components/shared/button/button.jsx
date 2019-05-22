@@ -1,16 +1,24 @@
 // @flow
 
 import React from 'react';
+import { defaultProps, withHandlers, compose } from 'recompose';
 import './button.scss';
 
-type Props = {
-    label: string,
-    variant: string,
-    handleAction: Function,
-};
-
-const Button = (props: Props) => (
-    <button className={props.variant} onClick={props.handleAction}> {props.label} </button>
+const enhance = compose(
+  defaultProps({ variant: 'btnPrimary' }),
+  withHandlers({
+    onClick: props => () => {
+      props.handleAction();
+    },
+  }),
 );
+
+const Button = enhance(({ label, variant, onClick }) => (
+    <button
+        className={variant}
+        onClick={onClick}>
+        {label}
+    </button>
+));
 
 export default Button;

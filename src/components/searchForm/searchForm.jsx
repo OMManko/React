@@ -62,7 +62,7 @@ class SearchForm extends React.Component<Props> {
     return (
             <div className="searchForm">
                 <h2 className="searchForm__title">Find your movie</h2>
-                <TextField className="formControl" handleEnterAction={handleSearchMovies}
+                <TextField handleEnterAction={handleSearchMovies}
                 />
                 <div className="searchForm__controls">
                     <RadioGroup title="Search by"
@@ -70,7 +70,7 @@ class SearchForm extends React.Component<Props> {
                         handleAction={changeCurrentSearchOption}
                         radios={searchOptionsGroup}
                     />
-                    <Button variant="btnPrimary" label="Search" handleAction={handleSearchMovies}/>
+                    <Button label="Search" handleAction={handleSearchMovies}/>
                 </div>
             </div>
     );

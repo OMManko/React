@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { hot } from 'react-hot-loader';
-import { List } from "immutable";
+import { List } from 'immutable';
 import Radio from '../radio/radio';
 import './radioGroup.scss';
 

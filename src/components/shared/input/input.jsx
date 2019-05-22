@@ -4,6 +4,7 @@ import React from 'react';
 import './input.scss';
 import { hot } from 'react-hot-loader';
 import { connect } from 'react-redux';
+import { withHandlers, compose } from 'recompose';
 import { updateInputValue } from '../../../actions/actions';
 
 type Props = {
@@ -13,18 +14,24 @@ type Props = {
     handleEnterAction: Function
 };
 
-const TextField = (props: Props) => (
-    <input
-        type="text"
-        className={props.className}
-        onChange={changeEvent => props.handleInputChange(changeEvent.target.value)}
-        onKeyPress={event => event.key === 'Enter' && props.handleEnterAction()}
-    />
+const enhance = compose(
+  withHandlers({
+    onChange: props => (event) => {
+      props.handleInputChange(event.target.value);
+    },
+    onKeyPress: props => (event) => {
+      event.key === 'Enter' && props.handleEnterAction();
+    },
+  }),
 );
 
-TextField.propTypes = {
-
-};
+const TextField = enhance(({ onChange, onKeyPress }) => (
+    <input
+        type="text"
+        className='formControl'
+        onChange={onChange}
+        onKeyPress={onKeyPress}
+    />));
 
 const mapStateToProps = state => ({
   inputValue: state.searchInputValue,
