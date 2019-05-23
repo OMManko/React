@@ -4,41 +4,42 @@ import React from 'react';
 import { hot } from 'react-hot-loader';
 import './header.scss';
 import { connect } from 'react-redux';
+import { withProps } from 'recompose';
 import { Link } from 'react-router-dom';
 import { createStructuredSelector } from 'reselect';
 import Button from '../../shared/button/button';
 import AppLogo from '../../shared/appLogo/appLogo';
 import { resetSearch } from '../../../actions/actions';
-import { selectMovieInfo, selectMoviesList, selectSortOption } from '../../../selectors/selectors';
+import { selectMovieInfo } from '../../../selectors/selectors';
 
 type Props = {
     resetSearch: Function,
-    selectedMovieInfo: Object
+    selectedMovieInfo: Object,
+    button: Object
 };
 
-class Header extends React.Component<Props> {
-  render() {
-    const {
-      selectedMovieInfo,
-      resetSearch,
-    } = this.props;
+const HeaderWithoutButton = (props: Props) => (
+    <header className="header">
+        <div className="container">
+            <div className="header__info">
+                <AppLogo/>
+                {
+                    props.button ? (
+                        <Link to={'/'}>
+                            <Button variant="btnSecondary" label="Search" handleAction={props.resetSearch}/>
+                        </Link>) : null
+                }
+            </div>
+        </div>
+    </header>
+);
 
-    return (
-            <header className="header">
-                <div className="container">
-                    <div className="header__info">
-                        <AppLogo/>
-                        { selectedMovieInfo.size > 0
-                        && <Link to={'/'}>
-                                <Button variant="btnSecondary" label="Search" handleAction={resetSearch}/>
-                            </Link>
-                        }
-                    </div>
-                </div>
-            </header>
-    );
-  }
-}
+const HeaderWithButton = withProps({ button: true })(HeaderWithoutButton);
+
+const Header = (props: Props) => (
+  props.selectedMovieInfo.size > 0
+    ? <HeaderWithButton {...props} /> : <HeaderWithoutButton {...props} />
+);
 
 const mapStateToProps = createStructuredSelector({
   selectedMovieInfo: selectMovieInfo,
