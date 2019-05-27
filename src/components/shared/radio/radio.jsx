@@ -1,17 +1,30 @@
-import React from "react";
-import { hot } from "react-hot-loader";
-import "./radio.scss";
-import PropTypes from "prop-types";
+// @flow
 
-class Radio extends React.Component {
-    render () {
-        const { name, id, checked, label, handleAction } = this.props;
+import React from 'react';
+import { hot } from 'react-hot-loader';
+import './radio.scss';
+import PropTypes from 'prop-types';
 
-        const handleOptionChange = (changeEvent) => {
-            handleAction(changeEvent.target.id);
-        };
+type Props = {
+    name: string,
+    id: string,
+    label: string,
+    additionalClassName: string,
+    checked: Boolean,
+    handleAction: Function,
+};
 
-        return (
+class Radio extends React.Component<Props> {
+  render() {
+    const {
+      name, id, checked, label, handleAction,
+    } = this.props;
+
+    const handleOptionChange = (changeEvent) => {
+      handleAction(changeEvent.target.id);
+    };
+
+    return (
             <div className="formRadio">
                 <input
                     className="formRadio__input"
@@ -25,17 +38,8 @@ class Radio extends React.Component {
                     {label}
                 </label>
             </div>
-        );
-    }
+    );
+  }
 }
-
-Radio.propTypes = {
-    name: PropTypes.string,
-    id: PropTypes.string,
-    label: PropTypes.string,
-    additionalClassName: PropTypes.string,
-    checked: PropTypes.bool,
-    handleAction: PropTypes.func
-};
 
 export default hot(module)(Radio);

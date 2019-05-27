@@ -1,8 +1,10 @@
 @import "../../styles/variables";
 
 .movieInfo {
-  display: flex;
-  width: 80%;
+  @media screen and (min-width: $tablet) {
+    display: flex;
+    width: 80%;
+  }
 }
 
 .movieInfo__main {

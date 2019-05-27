@@ -1,10 +1,14 @@
 @import "../../styles/variables";
 
 .movieCard {
-  flex: 1 0 25%;
   position: relative;
-  margin: 0 20px 25px;
   cursor: pointer;
+  flex: 1;
+  margin: 0 0 25px;
+  @media screen and (min-width: $tablet) {
+    flex: 1 0 25%;
+    margin: 0 20px 25px;
+  }
 }
 
 .movieCard__main {

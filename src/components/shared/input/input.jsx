@@ -1,30 +1,44 @@
-import React from "react";
-import "./input.scss";
-import PropTypes from "prop-types";
-import { updateInputValue } from "../../../actions/actions";
-import { hot } from "react-hot-loader";
-import { connect } from "react-redux";
+// @flow
 
-const TextField = ({ className, inputValue, handleInputChange }) => (
-    <input
-        type="text"
-        className={className}
-        onChange={(changeEvent) => handleInputChange(changeEvent.target.value)}
-    />
-);
+import React from 'react';
+import './input.scss';
+import { hot } from 'react-hot-loader';
+import { connect } from 'react-redux';
+import { withHandlers, compose } from 'recompose';
+import { updateInputValue } from '../../../actions/actions';
 
-TextField.propTypes = {
-    className: PropTypes.string,
-    inputValue: PropTypes.string,
-    handleInputChange: PropTypes.func
+type Props = {
+    className: string,
+    inputValue: string,
+    handleInputChange: Function,
+    handleEnterAction: Function
 };
 
+const enhance = compose(
+  withHandlers({
+    onChange: props => (event) => {
+      props.handleInputChange(event.target.value);
+    },
+    onKeyPress: props => (event) => {
+      event.key === 'Enter' && props.handleEnterAction();
+    },
+  }),
+);
+
+const TextField = enhance(({ onChange, onKeyPress }) => (
+    <input
+        type="text"
+        className='formControl'
+        onChange={onChange}
+        onKeyPress={onKeyPress}
+    />));
+
 const mapStateToProps = state => ({
-    inputValue: state.searchInputValue
+  inputValue: state.searchInputValue,
 });
 
 const mapDispatchToProps = {
-    handleInputChange: updateInputValue
+  handleInputChange: updateInputValue,
 };
 
 export default hot(module)(connect(mapStateToProps, mapDispatchToProps)(TextField));

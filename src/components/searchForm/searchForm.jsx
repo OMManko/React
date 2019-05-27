@@ -1,88 +1,91 @@
-import React from "react";
-import { hot } from "react-hot-loader";
-import { connect } from "react-redux";
-import Button from "../shared/button/button";
-import TextField from "../shared/input/input";
-import RadioGroup from "../shared/radioGroup/radioGroup";
-import { filterOptions } from '../../constants/constants';
-import { changeSearchOption, fetchMovies, updateInputValue } from "../../actions/actions";
-import "./searchForm.scss";
-import PropTypes from "prop-types";
+// @flow
+
+import React from 'react';
+import { hot } from 'react-hot-loader';
+import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { List } from 'immutable';
+import { createStructuredSelector } from 'reselect';
+import Button from '../shared/button/button';
+import TextField from '../shared/input/input';
+import RadioGroup from '../shared/radioGroup/radioGroup';
+import { filterOptions } from '../../constants/constants';
+import { changeSearchOption, fetchMovies, updateInputValue } from '../../actions/actions';
+import './searchForm.scss';
+import { selectFilterOption, selectSearchInputValue } from '../../selectors/selectors';
 
-class SearchForm extends React.Component {
-    componentWillMount () {
-        const params = new URLSearchParams(this.props.location.search);
-        const searchValue = params.get('search') || null;
-        const filter = params.get('searchBy') || this.props.selectedFilterOption;
-        this.props.updateInputValue(searchValue);
-        this.props.searchMovies(searchValue, filter);
-    }
+type Props = {
+    inputValue: string,
+    selectedFilterOption: string,
+    changeCurrentSearchOption: Function,
+    searchMovies: Function,
+    updateInputValue: Function,
+    searchOptionsGroup: List<Object>,
+    history: Object,
+    location: Object,
+};
 
-    render () {
-        const {
-            selectedFilterOption,
-            changeCurrentSearchOption,
-            searchMovies,
-            inputValue,
-            searchOptionsGroup = [
-                {
-                    id: filterOptions.TITLE,
-                    label: "title",
-                    checked: selectedFilterOption === filterOptions.TITLE
-                },
-                {
-                    id: filterOptions.GENRE,
-                    label: "genre",
-                    checked: selectedFilterOption === filterOptions.GENRE
-                }
-            ]
-        } = this.props;
+class SearchForm extends React.Component<Props> {
+  componentWillMount() {
+    const params = new URLSearchParams(this.props.location.search);
+    const searchValue = params.get('search') || null;
+    const filter = params.get('searchBy') || this.props.selectedFilterOption;
+    this.props.updateInputValue(searchValue);
+    this.props.searchMovies(searchValue, filter);
+  }
 
-        const handleSearchMovies = () => {
-            this.props.history.push(`/search?search=${inputValue}&searchBy=${selectedFilterOption}`);
-            searchMovies(inputValue, selectedFilterOption);
-        };
+  render() {
+    const {
+      selectedFilterOption,
+      changeCurrentSearchOption,
+      searchMovies,
+      inputValue,
+      searchOptionsGroup = [
+        {
+          id: filterOptions.TITLE,
+          label: 'title',
+          checked: selectedFilterOption === filterOptions.TITLE,
+        },
+        {
+          id: filterOptions.GENRE,
+          label: 'genre',
+          checked: selectedFilterOption === filterOptions.GENRE,
+        },
+      ],
+    } = this.props;
 
-        return (
+    const handleSearchMovies = () => {
+      this.props.history.push(`/search?search=${inputValue}&searchBy=${selectedFilterOption}`);
+      searchMovies(inputValue, selectedFilterOption);
+    };
+
+    return (
             <div className="searchForm">
                 <h2 className="searchForm__title">Find your movie</h2>
-                <TextField className="formControl"/>
+                <TextField handleEnterAction={handleSearchMovies}
+                />
                 <div className="searchForm__controls">
                     <RadioGroup title="Search by"
                         name="searchByField"
                         handleAction={changeCurrentSearchOption}
                         radios={searchOptionsGroup}
                     />
-                    <Button variant="btn--primary" label="Search" handleAction={handleSearchMovies}/>
+                    <Button label="Search" handleAction={handleSearchMovies}/>
                 </div>
             </div>
-        );
-    }
+    );
+  }
 }
 
-SearchForm.propTypes = {
-    inputValue: PropTypes.string,
-    selectedFilterOption: PropTypes.string,
-    changeCurrentSearchOption: PropTypes.func,
-    searchMovies: PropTypes.func,
-    updateInputValue: PropTypes.func,
-    searchOptionsGroup: PropTypes.array,
-    history: PropTypes.object,
-    location: PropTypes.object
-};
-
-const mapStateToProps = state => ({
-    selectedFilterOption: state.selectedFilterOption,
-    inputValue: state.searchInputValue
+const mapStateToProps = createStructuredSelector({
+  selectedFilterOption: selectFilterOption,
+  inputValue: selectSearchInputValue,
 });
 
 const mapDispatchToProps = {
-    changeCurrentSearchOption: changeSearchOption,
-    searchMovies: fetchMovies,
-    updateInputValue
+  changeCurrentSearchOption: changeSearchOption,
+  searchMovies: fetchMovies,
+  updateInputValue,
 };
 
 export default hot(module)(withRouter(connect(mapStateToProps, mapDispatchToProps)(SearchForm)));
-
-

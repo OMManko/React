@@ -1,6 +1,7 @@
 @import "../../../styles/variables";
 
 .formControl {
+  display: block;
   border-width: 0 0 1px 0;
   border-color: $c-pink;
   background-color: lighten($c-black, 10%);

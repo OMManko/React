@@ -1,48 +1,52 @@
-import React from "react";
-import { hot } from "react-hot-loader";
-import "./header.scss";
-import Button from "../../shared/button/button";
-import AppLogo from "../../shared/appLogo/appLogo";
-import PropTypes from "prop-types";
-import { resetSearch } from "../../../actions/actions";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+// @flow
 
-class Header extends React.Component {
-    render () {
-        const {
-            resetSearch,
-            selectedMovieInfo
-        } = this.props;
+import React from 'react';
+import { hot } from 'react-hot-loader';
+import './header.scss';
+import { connect } from 'react-redux';
+import { withProps } from 'recompose';
+import { Link } from 'react-router-dom';
+import { createStructuredSelector } from 'reselect';
+import Button from '../../shared/button/button';
+import AppLogo from '../../shared/appLogo/appLogo';
+import { resetSearch } from '../../../actions/actions';
+import { selectMovieInfo } from '../../../selectors/selectors';
 
-        return (
-            <header className="header">
-                <div className="container">
-                    <div className="header__info">
-                        <AppLogo/>
-                        {Object.keys(selectedMovieInfo).length > 0 &&
-                            <Link to={`/`}>
-                                <Button variant="btn--secondary" label="Search" handleAction={resetSearch}/>
-                            </Link>
-                        }
-                    </div>
-                </div>
-            </header>
-        );
-    }
-}
-
-Header.propTypes = {
-    resetSearch: PropTypes.func,
-    selectedMovieInfo: PropTypes.object
+type Props = {
+    resetSearch: Function,
+    selectedMovieInfo: Object,
+    button: Object
 };
 
-const mapStateToProps = state => ({
-    selectedMovieInfo: state.selectedMovieInfo
+const HeaderWithoutButton = (props: Props) => (
+    <header className="header">
+        <div className="container">
+            <div className="header__info">
+                <AppLogo/>
+                {
+                    props.button ? (
+                        <Link to={'/'}>
+                            <Button variant="btnSecondary" label="Search" handleAction={props.resetSearch}/>
+                        </Link>) : null
+                }
+            </div>
+        </div>
+    </header>
+);
+
+const HeaderWithButton = withProps({ button: true })(HeaderWithoutButton);
+
+const Header = (props: Props) => (
+  props.selectedMovieInfo.size > 0
+    ? <HeaderWithButton {...props} /> : <HeaderWithoutButton {...props} />
+);
+
+const mapStateToProps = createStructuredSelector({
+  selectedMovieInfo: selectMovieInfo,
 });
 
 const mapDispatchToProps = {
-    resetSearch: resetSearch
+  resetSearch,
 };
 
 export default hot(module)(connect(mapStateToProps, mapDispatchToProps)(Header));

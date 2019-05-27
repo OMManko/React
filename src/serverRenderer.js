@@ -4,15 +4,15 @@ import { StaticRouter } from 'react-router-dom';
 import Root from './Root';
 import configureStore from './modules/configureStore';
 
-function renderHTML (html, preloadedState) {
-    return `
+function renderHTML(html, preloadedState) {
+  return `
       <!doctype html>
       <html>
         <head>
           <meta charset=utf-8>
           <title>React Server Side Rendering</title>
-          ${process.env.NODE_ENV === 'development' ? '' :
-        '<link href="/css/main.css" rel="stylesheet" type="text/css">'}
+          ${process.env.NODE_ENV === 'development' ? ''
+    : '<link href="/css/main.css" rel="stylesheet" type="text/css">'}
         </head>
         <body>
           <div id="root">${html}</div>
@@ -25,37 +25,37 @@ function renderHTML (html, preloadedState) {
   `;
 }
 
-export default function serverRenderer () {
-    return (req, res) => {
-        const store = configureStore();
-        // This context object contains the results of the render
-        const context = {};
+export default function serverRenderer() {
+  return (req, res) => {
+    const store = configureStore();
+    // This context object contains the results of the render
+    const context = {};
 
-        const root = (
+    const root = (
             <Root
                 context={context}
                 location={req.url}
                 Router={StaticRouter}
                 store={store}
             />
-        );
+    );
 
-        store.runSaga().done.then(() => {
-            const htmlString = renderToString(root);
-            if (context.url) {
-                res.writeHead(302, {
-                    Location: context.url
-                });
-                res.end();
-                return;
-            }
-
-            const preloadedState = store.getState();
-
-            res.send(renderHTML(htmlString, preloadedState));
+    store.runSaga().done.then(() => {
+      const htmlString = renderToString(root);
+      if (context.url) {
+        res.writeHead(302, {
+          Location: context.url,
         });
+        res.end();
+        return;
+      }
 
-        renderToString(root);
-        store.close();
-    };
+      const preloadedState = store.getState();
+
+      res.send(renderHTML(htmlString, preloadedState));
+    });
+
+    renderToString(root);
+    store.close();
+  };
 }

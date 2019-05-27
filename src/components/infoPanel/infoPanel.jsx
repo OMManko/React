@@ -1,6 +1,6 @@
-import React from "react";
-import { hot } from "react-hot-loader";
-import "./infoPanel.scss";
+import React from 'react';
+import { hot } from 'react-hot-loader';
+import './infoPanel.scss';
 
 const InfoPanel = ({ children }) => (
     <div className="infoPanel">
@@ -11,4 +11,3 @@ const InfoPanel = ({ children }) => (
 );
 
 export default hot(module)(InfoPanel);
-
